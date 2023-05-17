@@ -15,9 +15,9 @@ import (
 	"testing"
 	"time"
 
+	blackfury "github.com/elysiumstation/blackfury/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
-	blackfury "github.com/elysiumstation/blackfury/types"
 	"github.com/spf13/cobra"
 	tmcfg "github.com/tendermint/tendermint/config"
 	tmflags "github.com/tendermint/tendermint/libs/cli/flags"

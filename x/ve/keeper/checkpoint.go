@@ -8,11 +8,14 @@ import (
 // RegulateUserCheckpoint regulates user checkpoint.
 // veID:       must be valid ve id
 // lockedOld:
-//             Amount: can be zero
-//             End: can be expired or zero
+//
+//	Amount: can be zero
+//	End: can be expired or zero
+//
 // lockedNew:
-//             Amount: can be zero
-//             End: must be in the future or be zero
+//
+//	Amount: can be zero
+//	End: must be in the future or be zero
 func (k Keeper) RegulateUserCheckpoint(ctx sdk.Context, veID uint64, lockedOld types.LockedBalance, lockedNew types.LockedBalance) {
 	// check whether timestamp is regulated
 	types.CheckRegulatedUnixTime(lockedOld.End)

@@ -147,11 +147,11 @@ func (suite *KeeperTestSuite) TestKeeper_Params() {
 func (suite *KeeperTestSuite) TestKeeper_DenomsMetadata() {
 	suite.SetupTest()
 	var (
-		t        = suite.T()
-		k        = suite.app.BankKeeper
-		denom    = mertypes.MicroFUSDDenom
-		base     = denom
-		display  = base[1:]
+		t         = suite.T()
+		k         = suite.app.BankKeeper
+		denom     = mertypes.MicroFUSDDenom
+		base      = denom
+		display   = base[1:]
 		ufusdMeta = banktypes.Metadata{
 			Description: "The native stable token of the Blackfury.",
 			DenomUnits: []*banktypes.DenomUnit{
@@ -186,11 +186,11 @@ func (suite *KeeperTestSuite) TestKeeper_DenomsMetadata() {
 func (suite *KeeperTestSuite) TestKeeper_DenomMetadata() {
 	suite.SetupTest()
 	var (
-		t        = suite.T()
-		k        = suite.app.BankKeeper
-		denom    = mertypes.MicroFUSDDenom
-		base     = denom
-		display  = base[1:]
+		t         = suite.T()
+		k         = suite.app.BankKeeper
+		denom     = mertypes.MicroFUSDDenom
+		base      = denom
+		display   = base[1:]
 		ufusdMeta = banktypes.Metadata{
 			Description: "The native stable token of the Blackfury.",
 			DenomUnits: []*banktypes.DenomUnit{

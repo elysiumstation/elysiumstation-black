@@ -18,7 +18,8 @@ service Query {
 
   // Airdrops queries airdrop target for given address.
   rpc Airdrop(QueryAirdropRequest) returns (QueryAirdropResponse) {
-    option (google.api.http).get = "/blackfury/vesting/v1/airdrops/{target_addr}";
+    option (google.api.http).get =
+        "/blackfury/vesting/v1/airdrops/{target_addr}";
   }
 
   // Parameters queries the parameters of the module.

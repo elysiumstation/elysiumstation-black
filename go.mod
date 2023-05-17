@@ -98,6 +98,7 @@ require (
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/jackpal/go-nat-pmp v1.0.2 // indirect
 	github.com/jmhodges/levigo v1.0.0 // indirect
+	github.com/kevinburke/go-bindata v1.1.0 // indirect
 	github.com/keybase/go-keychain v0.0.0-20190712205309-48d3d31d256d // indirect
 	github.com/klauspost/compress v1.13.6 // indirect
 	github.com/lib/pq v1.10.6 // indirect
@@ -158,8 +159,7 @@ require (
 )
 
 replace (
-	github.com/Gravity-Bridge/Gravity-Bridge/module => github.com/merlion-zone/gravity/module 
-v0.0.0-20220726103435-1f23555a12c8
+	github.com/Gravity-Bridge/Gravity-Bridge/module => github.com/merlion-zone/gravity/module v0.0.0-20220726103435-1f23555a12c8
 	github.com/cosmos/cosmos-sdk => github.com/merlion-zone/cosmos-sdk v0.45.4-merlion.6
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	github.com/keybase/go-keychain => github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4

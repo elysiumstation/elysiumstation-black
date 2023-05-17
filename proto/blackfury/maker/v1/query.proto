@@ -14,7 +14,8 @@ service Query {
   // AllBackingRiskParams queries risk params of all the backing pools.
   rpc AllBackingRiskParams(QueryAllBackingRiskParamsRequest)
       returns (QueryAllBackingRiskParamsResponse) {
-    option (google.api.http).get = "/blackfury/maker/v1/all_backing_risk_params";
+    option (google.api.http).get =
+        "/blackfury/maker/v1/all_backing_risk_params";
   }
 
   // AllCollateralRiskParams queries risk params of all the collateral pools.
@@ -79,7 +80,8 @@ service Query {
   // EstimateMintBySwapIn estimates input of minting by swap.
   rpc EstimateMintBySwapIn(EstimateMintBySwapInRequest)
       returns (EstimateMintBySwapInResponse) {
-    option (google.api.http).get = "/blackfury/maker/v1/estimate_mint_by_swap_in";
+    option (google.api.http).get =
+        "/blackfury/maker/v1/estimate_mint_by_swap_in";
   }
 
   // EstimateMintBySwapOut estimates output of minting by swap.
@@ -92,7 +94,8 @@ service Query {
   // EstimateBurnBySwapIn estimates input of burning by swap.
   rpc EstimateBurnBySwapIn(EstimateBurnBySwapInRequest)
       returns (EstimateBurnBySwapInResponse) {
-    option (google.api.http).get = "/blackfury/maker/v1/estimate_burn_by_swap_in";
+    option (google.api.http).get =
+        "/blackfury/maker/v1/estimate_burn_by_swap_in";
   }
 
   // EstimateBurnBySwapOut estimates output of burning by swap.
@@ -105,19 +108,22 @@ service Query {
   // EstimateBuyBackingIn estimates inpput of buying backing assets.
   rpc EstimateBuyBackingIn(EstimateBuyBackingInRequest)
       returns (EstimateBuyBackingInResponse) {
-    option (google.api.http).get = "/blackfury/maker/v1/estimate_buy_backing_in";
+    option (google.api.http).get =
+        "/blackfury/maker/v1/estimate_buy_backing_in";
   }
 
   // EstimateBuyBackingOut estimates output of buying backing assets.
   rpc EstimateBuyBackingOut(EstimateBuyBackingOutRequest)
       returns (EstimateBuyBackingOutResponse) {
-    option (google.api.http).get = "/blackfury/maker/v1/estimate_buy_backing_out";
+    option (google.api.http).get =
+        "/blackfury/maker/v1/estimate_buy_backing_out";
   }
 
   // EstimateSellBackingIn estimates input of selling backing assets.
   rpc EstimateSellBackingIn(EstimateSellBackingInRequest)
       returns (EstimateSellBackingInResponse) {
-    option (google.api.http).get = "/blackfury/maker/v1/estimate_sell_backing_in";
+    option (google.api.http).get =
+        "/blackfury/maker/v1/estimate_sell_backing_in";
   }
 
   // EstimateSellBackingOut estimates output of selling backing assets.

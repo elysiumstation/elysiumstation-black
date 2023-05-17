@@ -104,7 +104,7 @@ func (suite *KeeperTestSuite) TestEstimateMintBySwapIn() {
 			},
 			expPass: true,
 			expRes: &types.EstimateMintBySwapInResponse{
-				BackingIn: sdk.NewCoin(suite.bcDenom, sdk.NewInt(812121)),                     // 1_000000 * (1+0.005) * 0.8 / 0.99
+				BackingIn: sdk.NewCoin(suite.bcDenom, sdk.NewInt(812121)),                       // 1_000000 * (1+0.005) * 0.8 / 0.99
 				FuryIn:    sdk.NewCoin(blackfury.AttoFuryDenom, sdk.NewInt(2010_000000_000000)), // 1_000000 * (1+0.005) * 0.2 / 10**-10
 				MintFee:   sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(5000)),
 			},
@@ -232,8 +232,8 @@ func (suite *KeeperTestSuite) TestEstimateMintBySwapOut() {
 			expRes: &types.EstimateMintBySwapOutResponse{
 				BackingIn: sdk.NewCoin(suite.bcDenom, sdk.NewInt(500000)),
 				FuryIn:    sdk.NewCoin(blackfury.AttoFuryDenom, sdk.NewInt(1237_500000_000000)), // 500000 * 0.99 / 0.8 * 0.2 / (10**-10)
-				MintOut:   sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(615656)),             // 500000 * 0.99 / 0.8 * (1 - 0.005)
-				MintFee:   sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(3094)),               // 500000 * 0.99 / 0.8 * 0.005
+				MintOut:   sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(615656)),            // 500000 * 0.99 / 0.8 * (1 - 0.005)
+				MintFee:   sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(3094)),              // 500000 * 0.99 / 0.8 * 0.005
 			},
 		},
 		{
@@ -249,8 +249,8 @@ func (suite *KeeperTestSuite) TestEstimateMintBySwapOut() {
 			expRes: &types.EstimateMintBySwapOutResponse{
 				BackingIn: sdk.NewCoin(suite.bcDenom, sdk.NewInt(500000)),
 				FuryIn:    sdk.NewCoin(blackfury.AttoFuryDenom, sdk.NewInt(1237_500000_000000)), // 500000 * 0.99 / 0.8 * 0.2 / (10**-10)
-				MintOut:   sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(615656)),             // 500000 * 0.99 / 0.8 * (1 - 0.005)
-				MintFee:   sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(3094)),               // 500000 * 0.99 / 0.8 * 0.005
+				MintOut:   sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(615656)),            // 500000 * 0.99 / 0.8 * (1 - 0.005)
+				MintFee:   sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(3094)),              // 500000 * 0.99 / 0.8 * 0.005
 			},
 		},
 		{
@@ -410,7 +410,7 @@ func (suite *KeeperTestSuite) TestEstimateBurnBySwapIn() {
 				BurnIn:     sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(622485)), // 500000 * 0.99 / 0.8 / (1-0.006)
 				BackingOut: sdk.NewCoin(suite.bcDenom, sdk.NewInt(500000)),
 				FuryOut:    sdk.NewCoin(blackfury.AttoFuryDenom, sdk.NewInt(1237_500000_000000)), // 500000 * 0.99 / 0.8 * 0.2 / (10**-10)
-				BurnFee:    sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(3735)),               // 500000 * 0.99 / 0.8 / (1-0.006) * 0.006
+				BurnFee:    sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(3735)),              // 500000 * 0.99 / 0.8 / (1-0.006) * 0.006
 			},
 		},
 		{
@@ -427,7 +427,7 @@ func (suite *KeeperTestSuite) TestEstimateBurnBySwapIn() {
 				BurnIn:     sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(622485)), // 500000 * 0.99 / 0.8 / (1-0.006)
 				BackingOut: sdk.NewCoin(suite.bcDenom, sdk.NewInt(500000)),
 				FuryOut:    sdk.NewCoin(blackfury.AttoFuryDenom, sdk.NewInt(1237_500000_000000)), // 500000 * 0.99 / 0.8 * 0.2 / (10**-10)
-				BurnFee:    sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(3735)),               // 500000 * 0.99 / 0.8 / (1-0.006) * 0.006
+				BurnFee:    sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(3735)),              // 500000 * 0.99 / 0.8 / (1-0.006) * 0.006
 			},
 		},
 		{
@@ -442,7 +442,7 @@ func (suite *KeeperTestSuite) TestEstimateBurnBySwapIn() {
 			expPass: true,
 			expRes: &types.EstimateBurnBySwapInResponse{
 				BurnIn:     sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(1257545)), // 10**16 * 10**-10 / 0.8 / (1-0.006)
-				BackingOut: sdk.NewCoin(suite.bcDenom, sdk.NewInt(252525)),          // 10**16 * 10**-10 / 0.8 * 0.2 / 0.99
+				BackingOut: sdk.NewCoin(suite.bcDenom, sdk.NewInt(252525)),             // 10**16 * 10**-10 / 0.8 * 0.2 / 0.99
 				FuryOut:    sdk.NewCoin(blackfury.AttoFuryDenom, sdk.NewInt(10000_000000_000000)),
 				BurnFee:    sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(7545)), // 10**16 * 10**-10 / 0.8 / (1-0.006) * 0.006
 			},
@@ -459,7 +459,7 @@ func (suite *KeeperTestSuite) TestEstimateBurnBySwapIn() {
 			expPass: true,
 			expRes: &types.EstimateBurnBySwapInResponse{
 				BurnIn:     sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(1257545)), // 10**16 * 10**-10 / 0.8 / (1-0.006)
-				BackingOut: sdk.NewCoin(suite.bcDenom, sdk.NewInt(252525)),          // 10**16 * 10**-10 / 0.8 * 0.2 / 0.99
+				BackingOut: sdk.NewCoin(suite.bcDenom, sdk.NewInt(252525)),             // 10**16 * 10**-10 / 0.8 * 0.2 / 0.99
 				FuryOut:    sdk.NewCoin(blackfury.AttoFuryDenom, sdk.NewInt(10000_000000_000000)),
 				BurnFee:    sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(7545)), // 10**16 * 10**-10 / 0.8 / (1-0.006) * 0.006
 			},
@@ -569,9 +569,9 @@ func (suite *KeeperTestSuite) TestEstimateBurnBySwapOut() {
 			},
 			expPass: true,
 			expRes: &types.EstimateBurnBySwapOutResponse{
-				BackingOut: sdk.NewCoin(suite.bcDenom, sdk.ZeroInt()),                          // 1_000000 * (1-0.006) / 0.99
+				BackingOut: sdk.NewCoin(suite.bcDenom, sdk.ZeroInt()),                            // 1_000000 * (1-0.006) / 0.99
 				FuryOut:    sdk.NewCoin(blackfury.AttoFuryDenom, sdk.NewInt(9940_000000_000000)), // 1_000000 * (1-0.006) / 10**-10
-				BurnFee:    sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(6000)),               // 1_000000 * 0.006
+				BurnFee:    sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(6000)),              // 1_000000 * 0.006
 			},
 		},
 		{
@@ -585,9 +585,9 @@ func (suite *KeeperTestSuite) TestEstimateBurnBySwapOut() {
 			},
 			expPass: true,
 			expRes: &types.EstimateBurnBySwapOutResponse{
-				BackingOut: sdk.NewCoin(suite.bcDenom, sdk.NewInt(803232)),                     // 1_000000 * (1-0.006) * 0.8 / 0.99
+				BackingOut: sdk.NewCoin(suite.bcDenom, sdk.NewInt(803232)),                       // 1_000000 * (1-0.006) * 0.8 / 0.99
 				FuryOut:    sdk.NewCoin(blackfury.AttoFuryDenom, sdk.NewInt(19880_00000_000000)), // 1_000000 * (1-0.006) * 0.2 / 10**-10
-				BurnFee:    sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(6000)),               // 1_000000 * 0.006
+				BurnFee:    sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(6000)),              // 1_000000 * 0.006
 			},
 		},
 	}
@@ -676,7 +676,7 @@ func (suite *KeeperTestSuite) TestEstimateBuyBackingIn() {
 			expPass: true,
 			expRes: &types.EstimateBuyBackingInResponse{
 				FuryIn:     sdk.NewCoin(blackfury.AttoFuryDenom, sdk.NewInt(29909_28600_000000)), // [3*10**5 / (1-0.007)] * 0.99 / 10**-10
-				BuybackFee: sdk.NewCoin(suite.bcDenom, sdk.NewInt(2115)),                       // [3*10**5 / (1-0.007)] * 0.007
+				BuybackFee: sdk.NewCoin(suite.bcDenom, sdk.NewInt(2115)),                         // [3*10**5 / (1-0.007)] * 0.007
 			},
 		},
 	}
@@ -845,7 +845,7 @@ func (suite *KeeperTestSuite) TestEstimateSellBackingIn() {
 			},
 			expPass: true,
 			expRes: &types.EstimateSellBackingInResponse{
-				BackingIn:   sdk.NewCoin(suite.bcDenom, sdk.NewInt(1_006578)),                 // 1*10**16 / (1+0.0075-0.004) * 10**-10 / 0.99
+				BackingIn:   sdk.NewCoin(suite.bcDenom, sdk.NewInt(1_006578)),                   // 1*10**16 / (1+0.0075-0.004) * 10**-10 / 0.99
 				SellbackFee: sdk.NewCoin(blackfury.AttoFuryDenom, sdk.NewInt(39_860488_290982)), // 1*10**16 / (1+0.0075-0.004) * 0.004
 			},
 		},

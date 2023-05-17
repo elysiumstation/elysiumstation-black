@@ -14,8 +14,8 @@ import (
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/cosmos/go-bip39"
-	"github.com/gogo/protobuf/proto"
 	blackfury "github.com/elysiumstation/blackfury/types"
+	"github.com/gogo/protobuf/proto"
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"

@@ -15,8 +15,8 @@ const (
 	// BaseDenom defines to the default denomination used in Blackfury (staking, EVM, governance, etc.)
 	BaseDenom = AttoFuryDenom
 
-	AttoFuryDenom = "afury" // 1e-18
-	MicroFUSDDenom = "ufusd"  // 1e-6
+	AttoFuryDenom  = "afury" // 1e-18
+	MicroFUSDDenom = "ufusd" // 1e-6
 )
 
 var (

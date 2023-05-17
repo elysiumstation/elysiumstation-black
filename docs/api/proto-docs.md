@@ -1722,8 +1722,8 @@ Query defines the maker gRPC querier service.
 <a name="blackfury.maker.v1.MsgBurnByCollateral"></a>
 
 ### MsgBurnByCollateral
-MsgBurnByCollateral represents a message to burn Black stablecoins by unlocking
-collateral.
+MsgBurnByCollateral represents a message to burn Black stablecoins by
+unlocking collateral.
 
 
 | Field | Type | Label | Description |

@@ -6,9 +6,9 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	fuzz "github.com/google/gofuzz"
 	"github.com/elysiumstation/blackfury/x/oracle"
 	"github.com/elysiumstation/blackfury/x/oracle/types"
+	fuzz "github.com/google/gofuzz"
 	"github.com/stretchr/testify/require"
 )
 

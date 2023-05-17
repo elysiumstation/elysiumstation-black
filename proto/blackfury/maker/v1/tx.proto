@@ -15,8 +15,8 @@ service Msg {
     option (google.api.http).get = "/blackfury/maker/v1/tx/mint_by_swap";
   }
 
-  // BurnBySwap burns Black stablecoins by swapping out strong-backing assets and
-  // Fury coins.
+  // BurnBySwap burns Black stablecoins by swapping out strong-backing assets
+  // and Fury coins.
   rpc BurnBySwap(MsgBurnBySwap) returns (MsgBurnBySwapResponse) {
     option (google.api.http).get = "/blackfury/maker/v1/tx/burn_by_swap";
   }
@@ -62,7 +62,8 @@ service Msg {
   // undercollateralized.
   rpc LiquidateCollateral(MsgLiquidateCollateral)
       returns (MsgLiquidateCollateralResponse) {
-    option (google.api.http).get = "/blackfury/maker/v1/tx/liquidate_collateral";
+    option (google.api.http).get =
+        "/blackfury/maker/v1/tx/liquidate_collateral";
   }
 }
 
@@ -253,8 +254,8 @@ message MsgMintByCollateralResponse {
   ];
 }
 
-// MsgBurnByCollateral represents a message to burn Black stablecoins by unlocking
-// collateral.
+// MsgBurnByCollateral represents a message to burn Black stablecoins by
+// unlocking collateral.
 message MsgBurnByCollateral {
   option (gogoproto.equal) = false;
   option (gogoproto.goproto_getters) = false;

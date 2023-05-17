@@ -11,8 +11,8 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/cosmos/cosmos-sdk/x/gov/client/cli"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	"github.com/gogo/protobuf/proto"
 	"github.com/elysiumstation/blackfury/x/bank/types"
+	"github.com/gogo/protobuf/proto"
 	"github.com/spf13/cobra"
 )
 

@@ -227,7 +227,8 @@ message AccountCollateral {
   string account = 1;
   // existing collateral
   cosmos.base.v1beta1.Coin collateral = 2 [ (gogoproto.nullable) = false ];
-  // remaining black debt, including minted by collateral, mint fee, last interest
+  // remaining black debt, including minted by collateral, mint fee, last
+  // interest
   cosmos.base.v1beta1.Coin mer_debt = 3 [ (gogoproto.nullable) = false ];
   // total collateralized fury
   cosmos.base.v1beta1.Coin fury_collateralized = 4

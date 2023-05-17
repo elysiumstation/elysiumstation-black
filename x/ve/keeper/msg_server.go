@@ -355,11 +355,12 @@ func (m msgServer) Withdraw(c context.Context, msg *types.MsgWithdraw) (*types.M
 }
 
 // DepositFor deposits some more amount and/or update locking end time for a veNFT.
-// 	 veID: must be valid ve id
-//   amount: locked amount to add; can be zero if no more amount to deposit
-//   unlockTime: when unlocking; can be zero if no need to update
-//   locked: existing locked; may be zero if no existing locked
-//   sendCoins: false when extend time or merge
+//
+//		 veID: must be valid ve id
+//	  amount: locked amount to add; can be zero if no more amount to deposit
+//	  unlockTime: when unlocking; can be zero if no need to update
+//	  locked: existing locked; may be zero if no existing locked
+//	  sendCoins: false when extend time or merge
 func (k Keeper) DepositFor(ctx sdk.Context, sender sdk.AccAddress, veID uint64, amount sdk.Int, unlockTime uint64, locked types.LockedBalance, sendCoins bool) error {
 	if amount.IsPositive() {
 		// take the amount from sender

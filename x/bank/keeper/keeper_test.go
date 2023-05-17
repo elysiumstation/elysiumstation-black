@@ -183,11 +183,11 @@ func (suite *KeeperTestSuite) TestKeeper_HasSupply() {
 func (suite *KeeperTestSuite) TestKeeper_GetDenomMetaData() {
 	suite.SetupTest()
 	var (
-		t        = suite.T()
-		k        = suite.app.BankKeeper
-		denom    = types.MicroFUSDDenom
-		base     = denom
-		display  = base[1:]
+		t         = suite.T()
+		k         = suite.app.BankKeeper
+		denom     = types.MicroFUSDDenom
+		base      = denom
+		display   = base[1:]
 		ufusdMeta = banktypes.Metadata{
 			Description: "The native stable token of the Blackfury.",
 			DenomUnits: []*banktypes.DenomUnit{

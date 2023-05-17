@@ -22,13 +22,13 @@ var (
 
 // Default parameter values
 var (
-	DefaultBackingRatioStep           = sdk.NewDecWithPrec(25, 4)    // 0.25%
-	DefaultBackingRatioPriceBand      = sdk.NewDecWithPrec(5, 3)     // 0.5%
+	DefaultBackingRatioStep           = sdk.NewDecWithPrec(25, 4)      // 0.25%
+	DefaultBackingRatioPriceBand      = sdk.NewDecWithPrec(5, 3)       // 0.5%
 	DefaultBackingRatioCooldownPeriod = int64(blackfury.BlocksPerHour) // 600
-	DefaultMintPriceBias              = sdk.NewDecWithPrec(1, 2)     // 1%
-	DefaultBurnPriceBias              = sdk.NewDecWithPrec(1, 2)     // 1%
-	DefaultRebackBonus                = sdk.NewDecWithPrec(75, 4)    // 0.75%
-	DefaultLiquidationCommissionFee   = sdk.NewDecWithPrec(10, 2)    // 10%
+	DefaultMintPriceBias              = sdk.NewDecWithPrec(1, 2)       // 1%
+	DefaultBurnPriceBias              = sdk.NewDecWithPrec(1, 2)       // 1%
+	DefaultRebackBonus                = sdk.NewDecWithPrec(75, 4)      // 0.75%
+	DefaultLiquidationCommissionFee   = sdk.NewDecWithPrec(10, 2)      // 10%
 )
 
 var _ paramtypes.ParamSet = (*Params)(nil)
