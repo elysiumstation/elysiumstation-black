@@ -4,7 +4,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/x/staking"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/furya-official/blackfury/x/staking/keeper"
+	"github.com/elysiumstation/blackfury/x/staking/keeper"
 	abci "github.com/tendermint/tendermint/abci/types"
 )
 

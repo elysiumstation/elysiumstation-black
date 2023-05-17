@@ -3,10 +3,10 @@ package gauge_test
 import (
 	"testing"
 
-	keepertest "github.com/furya-official/blackfury/testutil/keeper"
-	"github.com/furya-official/blackfury/testutil/nullify"
-	"github.com/furya-official/blackfury/x/gauge"
-	"github.com/furya-official/blackfury/x/gauge/types"
+	keepertest "github.com/elysiumstation/blackfury/testutil/keeper"
+	"github.com/elysiumstation/blackfury/testutil/nullify"
+	"github.com/elysiumstation/blackfury/x/gauge"
+	"github.com/elysiumstation/blackfury/x/gauge/types"
 	"github.com/stretchr/testify/require"
 )
 

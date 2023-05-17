@@ -3,7 +3,7 @@ package types_test
 import (
 	"testing"
 
-	"github.com/furya-official/blackfury/x/voter/types"
+	"github.com/elysiumstation/blackfury/x/voter/types"
 	"github.com/stretchr/testify/require"
 )
 

@@ -6,7 +6,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/x/staking"
-	"github.com/furya-official/blackfury/x/oracle/types"
+	"github.com/elysiumstation/blackfury/x/oracle/types"
 	"github.com/stretchr/testify/require"
 )
 

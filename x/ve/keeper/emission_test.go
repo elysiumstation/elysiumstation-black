@@ -4,7 +4,7 @@ import (
 	"math/big"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/furya-official/blackfury/x/ve/keeper"
+	"github.com/elysiumstation/blackfury/x/ve/keeper"
 )
 
 func (suite *KeeperTestSuite) TestEmitter_AddTotalEmission() {

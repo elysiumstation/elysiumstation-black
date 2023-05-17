@@ -7,8 +7,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/furya-official/blackfury/x/staking/types"
-	vetypes "github.com/furya-official/blackfury/x/ve/types"
+	"github.com/elysiumstation/blackfury/x/staking/types"
+	vetypes "github.com/elysiumstation/blackfury/x/ve/types"
 )
 
 func (k Keeper) GetVeValidator(ctx sdk.Context, addr sdk.ValAddress) (validator types.VeValidator, found bool) {

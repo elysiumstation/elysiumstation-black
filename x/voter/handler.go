@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"github.com/furya-official/blackfury/x/voter/keeper"
-	"github.com/furya-official/blackfury/x/voter/types"
+	"github.com/elysiumstation/blackfury/x/voter/keeper"
+	"github.com/elysiumstation/blackfury/x/voter/types"
 )
 
 // NewHandler ...

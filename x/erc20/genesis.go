@@ -2,8 +2,8 @@ package erc20
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/furya-official/blackfury/x/erc20/keeper"
-	"github.com/furya-official/blackfury/x/erc20/types"
+	"github.com/elysiumstation/blackfury/x/erc20/keeper"
+	"github.com/elysiumstation/blackfury/x/erc20/types"
 )
 
 // InitGenesis initializes the capability module's state from a provided genesis

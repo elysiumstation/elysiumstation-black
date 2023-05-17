@@ -8,7 +8,7 @@ import (
 	nfttypes "github.com/cosmos/cosmos-sdk/x/nft"
 	nftkeeper "github.com/cosmos/cosmos-sdk/x/nft/keeper"
 	nft "github.com/cosmos/cosmos-sdk/x/nft/module"
-	"github.com/furya-official/blackfury/x/ve/types"
+	"github.com/elysiumstation/blackfury/x/ve/types"
 )
 
 type NftAppModule struct {

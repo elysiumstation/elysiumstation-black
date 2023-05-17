@@ -3,7 +3,7 @@ package keeper_test
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	"github.com/furya-official/blackfury/types"
+	"github.com/elysiumstation/blackfury/types"
 	"github.com/stretchr/testify/require"
 )
 

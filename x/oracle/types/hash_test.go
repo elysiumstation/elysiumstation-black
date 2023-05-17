@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/furya-official/blackfury/x/oracle/types"
+	"github.com/elysiumstation/blackfury/x/oracle/types"
 	"github.com/stretchr/testify/require"
 	"gopkg.in/yaml.v2"
 )

@@ -10,7 +10,7 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	govrest "github.com/cosmos/cosmos-sdk/x/gov/client/rest"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	"github.com/furya-official/blackfury/x/bank/types"
+	"github.com/elysiumstation/blackfury/x/bank/types"
 )
 
 type SetDenomMetadataProposalRequest struct {

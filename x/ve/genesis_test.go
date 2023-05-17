@@ -7,10 +7,10 @@ import (
 	"github.com/stretchr/testify/suite"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/furya-official/blackfury/app"
-	blackfury "github.com/furya-official/blackfury/types"
-	"github.com/furya-official/blackfury/x/ve"
-	"github.com/furya-official/blackfury/x/ve/types"
+	"github.com/elysiumstation/blackfury/app"
+	blackfury "github.com/elysiumstation/blackfury/types"
+	"github.com/elysiumstation/blackfury/x/ve"
+	"github.com/elysiumstation/blackfury/x/ve/types"
 )
 
 type GenesisTestSuite struct {

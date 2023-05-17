@@ -6,7 +6,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
-	"github.com/furya-official/blackfury/x/vesting/types"
+	"github.com/elysiumstation/blackfury/x/vesting/types"
 	"github.com/tendermint/tendermint/libs/log"
 )
 

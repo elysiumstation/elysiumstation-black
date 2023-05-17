@@ -287,7 +287,7 @@ update-swagger-docs: statik
 .PHONY: update-swagger-docs
 
 godocs:
-	@echo "--> Wait a few seconds and visit http://localhost:6060/pkg/github.com/furya-official/blackfury/types"
+	@echo "--> Wait a few seconds and visit http://localhost:6060/pkg/github.com/elysiumstation/blackfury/types"
 	godoc -http=:6060
 
 # Start docs site at localhost:8080
@@ -433,7 +433,7 @@ lint-fix-contracts:
 format:
 	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/docs/statik/statik.go" -not -name '*.pb.go' | xargs gofmt -w -s
 	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/docs/statik/statik.go" -not -name '*.pb.go' | xargs misspell -w
-	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/docs/statik/statik.go" -not -name '*.pb.go' | xargs goimports -w -local github.com/furya-official/blackfury
+	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/docs/statik/statik.go" -not -name '*.pb.go' | xargs goimports -w -local github.com/elysiumstation/blackfury
 .PHONY: format
 
 ###############################################################################
@@ -577,7 +577,7 @@ bridging-localnet-clean:
 ###                                Releasing                                ###
 ###############################################################################
 
-PACKAGE_NAME:=github.com/furya-official/blackfury
+PACKAGE_NAME:=github.com/elysiumstation/blackfury
 GOLANG_CROSS_VERSION  = v1.17.1
 GOPATH ?= '$(HOME)/go'
 release-dry-run:

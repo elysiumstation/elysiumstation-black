@@ -1,6 +1,6 @@
 FROM golang:stretch AS build-env
 
-WORKDIR /go/src/github.com/furya-official/blackfury
+WORKDIR /go/src/github.com/elysiumstation/blackfury
 
 RUN apt update
 RUN apt install git -y
@@ -16,7 +16,7 @@ RUN apt install ca-certificates jq -y
 
 WORKDIR /root
 
-COPY --from=build-env /go/src/github.com/furya-official/blackfury/build/blackfuryd /usr/bin/blackfuryd
+COPY --from=build-env /go/src/github.com/elysiumstation/blackfury/build/blackfuryd /usr/bin/blackfuryd
 
 EXPOSE 26656 26657 1317 9090
 

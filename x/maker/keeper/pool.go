@@ -4,7 +4,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/address"
-	"github.com/furya-official/blackfury/x/maker/types"
+	"github.com/elysiumstation/blackfury/x/maker/types"
 )
 
 func (k Keeper) SetTotalBacking(ctx sdk.Context, pool types.TotalBacking) {

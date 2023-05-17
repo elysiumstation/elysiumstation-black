@@ -4,7 +4,7 @@ import (
 	"context"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/furya-official/blackfury/x/voter/types"
+	"github.com/elysiumstation/blackfury/x/voter/types"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

@@ -3,9 +3,9 @@ package oracle
 import (
 	"time"
 
-	blackfury "github.com/furya-official/blackfury/types"
-	"github.com/furya-official/blackfury/x/oracle/keeper"
-	"github.com/furya-official/blackfury/x/oracle/types"
+	blackfury "github.com/elysiumstation/blackfury/types"
+	"github.com/elysiumstation/blackfury/x/oracle/keeper"
+	"github.com/elysiumstation/blackfury/x/oracle/types"
 
 	"github.com/cosmos/cosmos-sdk/telemetry"
 	sdk "github.com/cosmos/cosmos-sdk/types"

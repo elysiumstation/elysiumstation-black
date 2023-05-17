@@ -4,9 +4,9 @@ import (
 	"fmt"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	mertypes "github.com/furya-official/blackfury/types"
-	"github.com/furya-official/blackfury/x/vesting/keeper"
-	"github.com/furya-official/blackfury/x/vesting/types"
+	mertypes "github.com/elysiumstation/blackfury/types"
+	"github.com/elysiumstation/blackfury/x/vesting/keeper"
+	"github.com/elysiumstation/blackfury/x/vesting/types"
 	"github.com/tharsis/ethermint/crypto/ethsecp256k1"
 )
 

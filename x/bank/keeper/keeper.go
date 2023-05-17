@@ -11,8 +11,8 @@ import (
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
-	blackfury "github.com/furya-official/blackfury/types"
-	"github.com/furya-official/blackfury/x/bank/types"
+	blackfury "github.com/elysiumstation/blackfury/types"
+	"github.com/elysiumstation/blackfury/x/bank/types"
 )
 
 // Keeper manages transfers between accounts.

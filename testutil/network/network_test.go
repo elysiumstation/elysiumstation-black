@@ -14,7 +14,7 @@ import (
 	"github.com/tharsis/ethermint/server/config"
 	"github.com/tharsis/ethermint/testutil/network"
 
-	blackfurynetwork "github.com/furya-official/blackfury/testutil/network"
+	blackfurynetwork "github.com/elysiumstation/blackfury/testutil/network"
 )
 
 type IntegrationTestSuite struct {

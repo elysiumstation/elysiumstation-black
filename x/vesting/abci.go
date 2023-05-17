@@ -5,9 +5,9 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/telemetry"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	blackfury "github.com/furya-official/blackfury/types"
-	"github.com/furya-official/blackfury/x/vesting/keeper"
-	"github.com/furya-official/blackfury/x/vesting/types"
+	blackfury "github.com/elysiumstation/blackfury/types"
+	"github.com/elysiumstation/blackfury/x/vesting/keeper"
+	"github.com/elysiumstation/blackfury/x/vesting/types"
 )
 
 // EndBlocker is called at the end of every block

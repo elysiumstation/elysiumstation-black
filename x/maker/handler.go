@@ -6,8 +6,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	"github.com/furya-official/blackfury/x/maker/keeper"
-	"github.com/furya-official/blackfury/x/maker/types"
+	"github.com/elysiumstation/blackfury/x/maker/keeper"
+	"github.com/elysiumstation/blackfury/x/maker/types"
 )
 
 // NewHandler ...

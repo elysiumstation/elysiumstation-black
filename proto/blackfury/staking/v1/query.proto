@@ -1,4 +1,4 @@
 syntax = "proto3";
 package blackfury.staking.v1;
 
-option go_package = "github.com/furya-official/blackfury/x/staking/types";
+option go_package = "github.com/elysiumstation/blackfury/x/staking/types";

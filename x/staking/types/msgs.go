@@ -4,7 +4,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	vetypes "github.com/furya-official/blackfury/x/ve/types"
+	vetypes "github.com/elysiumstation/blackfury/x/ve/types"
 )
 
 const (

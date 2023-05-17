@@ -4,7 +4,7 @@ import (
 	"os"
 
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
-	"github.com/furya-official/blackfury/app"
+	"github.com/elysiumstation/blackfury/app"
 )
 
 func main() {

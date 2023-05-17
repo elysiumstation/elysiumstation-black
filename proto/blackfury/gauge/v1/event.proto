@@ -1,4 +1,4 @@
 syntax = "proto3";
 package blackfury.gauge.v1;
 
-option go_package = "github.com/furya-official/blackfury/x/gauge/types";
+option go_package = "github.com/elysiumstation/blackfury/x/gauge/types";

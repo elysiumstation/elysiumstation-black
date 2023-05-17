@@ -50,8 +50,8 @@ module.exports = {
     '!cosmos-sdk/**',
     '!ibc-go/**'],
   themeConfig: {
-    repo: 'furya-official/blackfury',
-    docsRepo: 'furya-official/blackfury',
+    repo: 'elysiumstation/blackfury',
+    docsRepo: 'elysiumstation/blackfury',
     docsBranch: 'main',
     docsDir: 'docs',
     editLinks: true,
@@ -136,7 +136,7 @@ module.exports = {
       services: [
         {
           service: 'github',
-          url: 'https://github.com/furya-official/blackfury',
+          url: 'https://github.com/elysiumstation/blackfury',
         },
         {
           service: 'medium',

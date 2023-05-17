@@ -16,7 +16,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 
-	"github.com/furya-official/blackfury/x/oracle/types"
+	"github.com/elysiumstation/blackfury/x/oracle/types"
 )
 
 // GetTxCmd returns the transaction commands for this module

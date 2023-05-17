@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/furya-official/blackfury/x/ve/keeper"
-	"github.com/furya-official/blackfury/x/ve/types"
+	"github.com/elysiumstation/blackfury/x/ve/keeper"
+	"github.com/elysiumstation/blackfury/x/ve/types"
 	"github.com/tharsis/ethermint/crypto/ethsecp256k1"
 )
 

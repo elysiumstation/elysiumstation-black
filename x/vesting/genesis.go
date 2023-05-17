@@ -2,8 +2,8 @@ package vesting
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/furya-official/blackfury/x/vesting/keeper"
-	"github.com/furya-official/blackfury/x/vesting/types"
+	"github.com/elysiumstation/blackfury/x/vesting/keeper"
+	"github.com/elysiumstation/blackfury/x/vesting/types"
 )
 
 // InitGenesis initializes the vesting module's state from a provided genesis

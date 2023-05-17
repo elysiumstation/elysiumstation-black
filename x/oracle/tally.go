@@ -3,8 +3,8 @@ package oracle
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-official/blackfury/x/oracle/keeper"
-	"github.com/furya-official/blackfury/x/oracle/types"
+	"github.com/elysiumstation/blackfury/x/oracle/keeper"
+	"github.com/elysiumstation/blackfury/x/oracle/types"
 )
 
 // Tally calculates the median and returns it. Sets the set of voters to be rewarded, i.e., voted within

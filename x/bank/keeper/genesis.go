@@ -6,7 +6,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	blackfury "github.com/furya-official/blackfury/types"
+	blackfury "github.com/elysiumstation/blackfury/types"
 )
 
 func (k Keeper) InitGenesis(ctx sdk.Context, genState *banktypes.GenesisState) {

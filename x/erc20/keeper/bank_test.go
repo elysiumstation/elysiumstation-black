@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
-	erc20types "github.com/furya-official/blackfury/x/erc20/types"
+	erc20types "github.com/elysiumstation/blackfury/x/erc20/types"
 	"github.com/stretchr/testify/require"
 )
 

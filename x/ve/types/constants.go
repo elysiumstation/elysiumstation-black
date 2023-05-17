@@ -4,7 +4,7 @@ import (
 	"math"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	blackfury "github.com/furya-official/blackfury/types"
+	blackfury "github.com/elysiumstation/blackfury/types"
 )
 
 const (

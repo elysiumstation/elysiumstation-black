@@ -6,7 +6,7 @@ import (
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/furya-official/blackfury/x/staking/types"
+	"github.com/elysiumstation/blackfury/x/staking/types"
 )
 
 type Keeper struct {

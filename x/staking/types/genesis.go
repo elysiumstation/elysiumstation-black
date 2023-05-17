@@ -2,7 +2,7 @@ package types
 
 import (
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	blackfury "github.com/furya-official/blackfury/types"
+	blackfury "github.com/elysiumstation/blackfury/types"
 )
 
 // DefaultGenesis gets the raw genesis raw message for testing

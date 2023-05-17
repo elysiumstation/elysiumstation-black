@@ -8,7 +8,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
-	"github.com/furya-official/blackfury/x/erc20/types"
+	"github.com/elysiumstation/blackfury/x/erc20/types"
 )
 
 type Keeper struct {

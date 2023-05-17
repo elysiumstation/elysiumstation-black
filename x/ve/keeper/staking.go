@@ -2,7 +2,7 @@ package keeper
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/furya-official/blackfury/x/ve/types"
+	"github.com/elysiumstation/blackfury/x/ve/types"
 )
 
 func (k Keeper) SlashLockedAmountByUser(ctx sdk.Context, veID uint64, amount sdk.Int) {

@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/cosmos/cosmos-sdk/client"
-	"github.com/furya-official/blackfury/x/erc20/types"
+	"github.com/elysiumstation/blackfury/x/erc20/types"
 )
 
 // GetQueryCmd returns the cli query commands for this module

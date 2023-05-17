@@ -5,9 +5,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	blackfury "github.com/furya-official/blackfury/types"
-	"github.com/furya-official/blackfury/x/maker/types"
-	oracletypes "github.com/furya-official/blackfury/x/oracle/types"
+	blackfury "github.com/elysiumstation/blackfury/types"
+	"github.com/elysiumstation/blackfury/x/maker/types"
+	oracletypes "github.com/elysiumstation/blackfury/x/oracle/types"
 )
 
 type msgServer struct {

@@ -2,7 +2,7 @@ package keeper
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/furya-official/blackfury/x/gauge/types"
+	"github.com/elysiumstation/blackfury/x/gauge/types"
 )
 
 type Bribe struct {
