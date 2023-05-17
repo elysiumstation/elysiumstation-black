@@ -24,7 +24,7 @@ func (suite *KeeperTestSuite) TestEstimateMintBySwapIn() {
 			},
 			req:     &types.EstimateMintBySwapInRequest{BackingDenom: suite.bcDenom},
 			expPass: false,
-			expErr:  types.ErrMerPriceTooLow,
+			expErr:  types.ErrBlackPriceTooLow,
 		},
 		{
 			name:    "backing denom not found",
@@ -45,7 +45,7 @@ func (suite *KeeperTestSuite) TestEstimateMintBySwapIn() {
 				BackingDenom: suite.bcDenom,
 			},
 			expPass: false,
-			expErr:  types.ErrMerCeiling,
+			expErr:  types.ErrBlackCeiling,
 		},
 		{
 			name: "default full backing",
@@ -158,7 +158,7 @@ func (suite *KeeperTestSuite) TestEstimateMintBySwapOut() {
 			},
 			req:     &types.EstimateMintBySwapOutRequest{BackingInMax: sdk.NewCoin(suite.bcDenom, sdk.ZeroInt())},
 			expPass: false,
-			expErr:  types.ErrMerPriceTooLow,
+			expErr:  types.ErrBlackPriceTooLow,
 		},
 		{
 			name:    "backing denom not found",
@@ -293,7 +293,7 @@ func (suite *KeeperTestSuite) TestEstimateMintBySwapOut() {
 				BackingInMax: sdk.NewCoin(suite.bcDenom, sdk.NewInt(2_500000)),
 			},
 			expPass: false,
-			expErr:  types.ErrMerCeiling,
+			expErr:  types.ErrBlackCeiling,
 		},
 		{
 			name: "backing over ceiling",
@@ -343,7 +343,7 @@ func (suite *KeeperTestSuite) TestEstimateBurnBySwapIn() {
 			},
 			req:     &types.EstimateBurnBySwapInRequest{BackingOutMax: sdk.NewCoin(suite.bcDenom, sdk.ZeroInt())},
 			expPass: false,
-			expErr:  types.ErrMerPriceTooHigh,
+			expErr:  types.ErrBlackPriceTooHigh,
 		},
 		{
 			name:    "backing denom not found",
@@ -504,7 +504,7 @@ func (suite *KeeperTestSuite) TestEstimateBurnBySwapOut() {
 			},
 			req:     &types.EstimateBurnBySwapOutRequest{BackingDenom: suite.bcDenom},
 			expPass: false,
-			expErr:  types.ErrMerPriceTooHigh,
+			expErr:  types.ErrBlackPriceTooHigh,
 		},
 		{
 			name:    "backing denom not found",
@@ -836,7 +836,7 @@ func (suite *KeeperTestSuite) TestEstimateSellBackingIn() {
 			malleate: func() {
 				totalBacking, found := suite.app.MakerKeeper.GetTotalBacking(suite.ctx)
 				suite.Require().True(found)
-				totalBacking.MerMinted.Amount = sdk.NewInt(10_000000)
+				totalBacking.BlackMinted.Amount = sdk.NewInt(10_000000)
 				suite.app.MakerKeeper.SetTotalBacking(suite.ctx, totalBacking)
 			},
 			req: &types.EstimateSellBackingInRequest{
@@ -909,7 +909,7 @@ func (suite *KeeperTestSuite) TestEstimateSellBackingOut() {
 			malleate: func() {
 				totalBacking, found := suite.app.MakerKeeper.GetTotalBacking(suite.ctx)
 				suite.Require().True(found)
-				totalBacking.MerMinted.Amount = sdk.NewInt(10_000000)
+				totalBacking.BlackMinted.Amount = sdk.NewInt(10_000000)
 				suite.app.MakerKeeper.SetTotalBacking(suite.ctx, totalBacking)
 			},
 			req:     &types.EstimateSellBackingOutRequest{BackingIn: sdk.NewCoin(suite.bcDenom, sdk.NewInt(1_000000))},
@@ -960,13 +960,13 @@ func (suite *KeeperTestSuite) setupEstimationTest() {
 
 	// set pool and total backing
 	suite.app.MakerKeeper.SetPoolBacking(suite.ctx, types.PoolBacking{
-		MerMinted:  sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(8_000000)),
+		BlackMinted:  sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(8_000000)),
 		Backing:    sdk.NewCoin(suite.bcDenom, sdk.NewInt(9_000000)),
 		FuryBurned: sdk.NewCoin(blackfury.AttoFuryDenom, sdk.ZeroInt()),
 	})
 	suite.app.BankKeeper.MintCoins(suite.ctx, types.ModuleName, sdk.NewCoins(sdk.NewCoin(suite.bcDenom, sdk.NewInt(1000_000000))))
 	suite.app.MakerKeeper.SetTotalBacking(suite.ctx, types.TotalBacking{
-		MerMinted:  sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(8_500000)),
+		BlackMinted:  sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(8_500000)),
 		FuryBurned: sdk.NewCoin(blackfury.AttoFuryDenom, sdk.ZeroInt()),
 	})
 
@@ -974,18 +974,18 @@ func (suite *KeeperTestSuite) setupEstimationTest() {
 	suite.app.MakerKeeper.SetAccountCollateral(suite.ctx, suite.accAddress, types.AccountCollateral{
 		Account:             suite.accAddress.String(),
 		Collateral:          sdk.NewCoin(suite.bcDenom, sdk.NewInt(10_000000)),
-		MerDebt:             sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(6_000000)),
+		BlackDebt:             sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(6_000000)),
 		FuryCollateralized:  sdk.NewCoin(blackfury.AttoFuryDenom, sdk.NewInt(3e15)),
 		LastInterest:        sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
 		LastSettlementBlock: 0,
 	})
 	suite.app.MakerKeeper.SetPoolCollateral(suite.ctx, types.PoolCollateral{
 		Collateral:         sdk.NewCoin(suite.bcDenom, sdk.NewInt(15_000000)),
-		MerDebt:            sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(8_000000)),
+		BlackDebt:            sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(8_000000)),
 		FuryCollateralized: sdk.NewCoin(blackfury.AttoFuryDenom, sdk.ZeroInt()),
 	})
 	suite.app.MakerKeeper.SetTotalCollateral(suite.ctx, types.TotalCollateral{
-		MerDebt:            sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(10_000000)),
+		BlackDebt:            sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.NewInt(10_000000)),
 		FuryCollateralized: sdk.NewCoin(blackfury.AttoFuryDenom, sdk.ZeroInt()),
 	})
 }

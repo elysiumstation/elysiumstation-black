@@ -34,7 +34,7 @@ type BackingRiskParams struct {
 	// maximum total backing amount
 	MaxBacking *github_com_cosmos_cosmos_sdk_types.Int `protobuf:"bytes,3,opt,name=max_backing,json=maxBacking,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Int" json:"max_backing,omitempty"`
 	// maximum mintable Black amount
-	MaxMerMint *github_com_cosmos_cosmos_sdk_types.Int `protobuf:"bytes,4,opt,name=max_mer_mint,json=maxMerMint,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Int" json:"max_mer_mint,omitempty"`
+	MaxBlackMint *github_com_cosmos_cosmos_sdk_types.Int `protobuf:"bytes,4,opt,name=max_black_mint,json=maxBlackMint,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Int" json:"max_black_mint,omitempty"`
 	// mint fee rate
 	MintFee *github_com_cosmos_cosmos_sdk_types.Dec `protobuf:"bytes,5,opt,name=mint_fee,json=mintFee,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Dec" json:"mint_fee,omitempty"`
 	// burn fee rate
@@ -101,7 +101,7 @@ type CollateralRiskParams struct {
 	// maximum total collateral amount; empty means no limit
 	MaxCollateral *github_com_cosmos_cosmos_sdk_types.Int `protobuf:"bytes,3,opt,name=max_collateral,json=maxCollateral,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Int" json:"max_collateral,omitempty"`
 	// maximum total mintable Black amount; empty means no limit
-	MaxMerMint *github_com_cosmos_cosmos_sdk_types.Int `protobuf:"bytes,4,opt,name=max_mer_mint,json=maxMerMint,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Int" json:"max_mer_mint,omitempty"`
+	MaxBlackMint *github_com_cosmos_cosmos_sdk_types.Int `protobuf:"bytes,4,opt,name=max_black_mint,json=maxBlackMint,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Int" json:"max_black_mint,omitempty"`
 	// ratio at which a position is defined as undercollateralized
 	LiquidationThreshold *github_com_cosmos_cosmos_sdk_types.Dec `protobuf:"bytes,5,opt,name=liquidation_threshold,json=liquidationThreshold,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Dec" json:"liquidation_threshold,omitempty"`
 	// maximum ratio of maximum amount of currency that can be borrowed with a
@@ -653,7 +653,7 @@ type TotalBacking struct {
 	// total backing value in uUSD
 	BackingValue github_com_cosmos_cosmos_sdk_types.Int `protobuf:"bytes,1,opt,name=backing_value,json=backingValue,proto3,customtype=github.com/cosmos/cosmos-sdk/types.Int" json:"backing_value"`
 	// total minted black; negative value means burned black
-	MerMinted types.Coin `protobuf:"bytes,2,opt,name=mer_minted,json=merMinted,proto3" json:"mer_minted"`
+	BlackMinted types.Coin `protobuf:"bytes,2,opt,name=black_minted,json=blackMinted,proto3" json:"black_minted"`
 	// total burned fury; negative value means minted fury
 	FuryBurned types.Coin `protobuf:"bytes,3,opt,name=fury_burned,json=furyBurned,proto3" json:"fury_burned"`
 }
@@ -691,9 +691,9 @@ func (m *TotalBacking) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_TotalBacking proto.InternalMessageInfo
 
-func (m *TotalBacking) GetMerMinted() types.Coin {
+func (m *TotalBacking) GetBlackMinted() types.Coin {
 	if m != nil {
-		return m.MerMinted
+		return m.BlackMinted
 	}
 	return types.Coin{}
 }
@@ -707,7 +707,7 @@ func (m *TotalBacking) GetFuryBurned() types.Coin {
 
 type PoolBacking struct {
 	// total minted black; negative value means burned black
-	MerMinted types.Coin `protobuf:"bytes,1,opt,name=mer_minted,json=merMinted,proto3" json:"mer_minted"`
+	BlackMinted types.Coin `protobuf:"bytes,1,opt,name=black_minted,json=blackMinted,proto3" json:"black_minted"`
 	// total backing
 	Backing types.Coin `protobuf:"bytes,2,opt,name=backing,proto3" json:"backing"`
 	// total burned fury; negative value means minted fury
@@ -747,9 +747,9 @@ func (m *PoolBacking) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PoolBacking proto.InternalMessageInfo
 
-func (m *PoolBacking) GetMerMinted() types.Coin {
+func (m *PoolBacking) GetBlackMinted() types.Coin {
 	if m != nil {
-		return m.MerMinted
+		return m.BlackMinted
 	}
 	return types.Coin{}
 }
@@ -807,7 +807,7 @@ var xxx_messageInfo_AccountBacking proto.InternalMessageInfo
 type TotalCollateral struct {
 	// total existing black debt, including minted by collateral, mint fee, last
 	// interest
-	MerDebt types.Coin `protobuf:"bytes,1,opt,name=mer_debt,json=merDebt,proto3" json:"mer_debt"`
+	BlackDebt types.Coin `protobuf:"bytes,1,opt,name=black_debt,json=blackDebt,proto3" json:"black_debt"`
 	// total collateralized fury
 	FuryCollateralized types.Coin `protobuf:"bytes,2,opt,name=fury_collateralized,json=furyCollateralized,proto3" json:"fury_collateralized"`
 }
@@ -845,9 +845,9 @@ func (m *TotalCollateral) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_TotalCollateral proto.InternalMessageInfo
 
-func (m *TotalCollateral) GetMerDebt() types.Coin {
+func (m *TotalCollateral) GetBlackDebt() types.Coin {
 	if m != nil {
-		return m.MerDebt
+		return m.BlackDebt
 	}
 	return types.Coin{}
 }
@@ -864,7 +864,7 @@ type PoolCollateral struct {
 	Collateral types.Coin `protobuf:"bytes,1,opt,name=collateral,proto3" json:"collateral"`
 	// total existing black debt, including minted by collateral, mint fee, last
 	// interest
-	MerDebt types.Coin `protobuf:"bytes,2,opt,name=mer_debt,json=merDebt,proto3" json:"mer_debt"`
+	BlackDebt types.Coin `protobuf:"bytes,2,opt,name=black_debt,json=blackDebt,proto3" json:"black_debt"`
 	// total collateralized fury
 	FuryCollateralized types.Coin `protobuf:"bytes,3,opt,name=fury_collateralized,json=furyCollateralized,proto3" json:"fury_collateralized"`
 }
@@ -909,9 +909,9 @@ func (m *PoolCollateral) GetCollateral() types.Coin {
 	return types.Coin{}
 }
 
-func (m *PoolCollateral) GetMerDebt() types.Coin {
+func (m *PoolCollateral) GetBlackDebt() types.Coin {
 	if m != nil {
-		return m.MerDebt
+		return m.BlackDebt
 	}
 	return types.Coin{}
 }
@@ -930,7 +930,7 @@ type AccountCollateral struct {
 	Collateral types.Coin `protobuf:"bytes,2,opt,name=collateral,proto3" json:"collateral"`
 	// remaining black debt, including minted by collateral, mint fee, last
 	// interest
-	MerDebt types.Coin `protobuf:"bytes,3,opt,name=mer_debt,json=merDebt,proto3" json:"mer_debt"`
+	BlackDebt types.Coin `protobuf:"bytes,3,opt,name=black_debt,json=blackDebt,proto3" json:"black_debt"`
 	// total collateralized fury
 	FuryCollateralized types.Coin `protobuf:"bytes,4,opt,name=fury_collateralized,json=furyCollateralized,proto3" json:"fury_collateralized"`
 	// remaining interest debt at last settlement
@@ -986,9 +986,9 @@ func (m *AccountCollateral) GetCollateral() types.Coin {
 	return types.Coin{}
 }
 
-func (m *AccountCollateral) GetMerDebt() types.Coin {
+func (m *AccountCollateral) GetBlackDebt() types.Coin {
 	if m != nil {
-		return m.MerDebt
+		return m.BlackDebt
 	}
 	return types.Coin{}
 }
@@ -1172,11 +1172,11 @@ func (m *BackingRiskParams) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x2a
 	}
-	if m.MaxMerMint != nil {
+	if m.MaxBlackMint != nil {
 		{
-			size := m.MaxMerMint.Size()
+			size := m.MaxBlackMint.Size()
 			i -= size
-			if _, err := m.MaxMerMint.MarshalTo(dAtA[i:]); err != nil {
+			if _, err := m.MaxBlackMint.MarshalTo(dAtA[i:]); err != nil {
 				return 0, err
 			}
 			i = encodeVarintMaker(dAtA, i, uint64(size))
@@ -1320,11 +1320,11 @@ func (m *CollateralRiskParams) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x2a
 	}
-	if m.MaxMerMint != nil {
+	if m.MaxBlackMint != nil {
 		{
-			size := m.MaxMerMint.Size()
+			size := m.MaxBlackMint.Size()
 			i -= size
-			if _, err := m.MaxMerMint.MarshalTo(dAtA[i:]); err != nil {
+			if _, err := m.MaxBlackMint.MarshalTo(dAtA[i:]); err != nil {
 				return 0, err
 			}
 			i = encodeVarintMaker(dAtA, i, uint64(size))
@@ -1759,7 +1759,7 @@ func (m *TotalBacking) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i--
 	dAtA[i] = 0x1a
 	{
-		size, err := m.MerMinted.MarshalToSizedBuffer(dAtA[:i])
+		size, err := m.BlackMinted.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
 			return 0, err
 		}
@@ -1822,7 +1822,7 @@ func (m *PoolBacking) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i--
 	dAtA[i] = 0x12
 	{
-		size, err := m.MerMinted.MarshalToSizedBuffer(dAtA[:i])
+		size, err := m.BlackMinted.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
 			return 0, err
 		}
@@ -1888,7 +1888,7 @@ func (m *TotalCollateral) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i--
 	dAtA[i] = 0x12
 	{
-		size, err := m.MerDebt.MarshalToSizedBuffer(dAtA[:i])
+		size, err := m.BlackDebt.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
 			return 0, err
 		}
@@ -1931,7 +1931,7 @@ func (m *PoolCollateral) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i--
 	dAtA[i] = 0x1a
 	{
-		size, err := m.MerDebt.MarshalToSizedBuffer(dAtA[:i])
+		size, err := m.BlackDebt.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
 			return 0, err
 		}
@@ -1999,7 +1999,7 @@ func (m *AccountCollateral) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i--
 	dAtA[i] = 0x22
 	{
-		size, err := m.MerDebt.MarshalToSizedBuffer(dAtA[:i])
+		size, err := m.BlackDebt.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
 			return 0, err
 		}
@@ -2056,8 +2056,8 @@ func (m *BackingRiskParams) Size() (n int) {
 		l = m.MaxBacking.Size()
 		n += 1 + l + sovMaker(uint64(l))
 	}
-	if m.MaxMerMint != nil {
-		l = m.MaxMerMint.Size()
+	if m.MaxBlackMint != nil {
+		l = m.MaxBlackMint.Size()
 		n += 1 + l + sovMaker(uint64(l))
 	}
 	if m.MintFee != nil {
@@ -2096,8 +2096,8 @@ func (m *CollateralRiskParams) Size() (n int) {
 		l = m.MaxCollateral.Size()
 		n += 1 + l + sovMaker(uint64(l))
 	}
-	if m.MaxMerMint != nil {
-		l = m.MaxMerMint.Size()
+	if m.MaxBlackMint != nil {
+		l = m.MaxBlackMint.Size()
 		n += 1 + l + sovMaker(uint64(l))
 	}
 	if m.LiquidationThreshold != nil {
@@ -2291,7 +2291,7 @@ func (m *TotalBacking) Size() (n int) {
 	_ = l
 	l = m.BackingValue.Size()
 	n += 1 + l + sovMaker(uint64(l))
-	l = m.MerMinted.Size()
+	l = m.BlackMinted.Size()
 	n += 1 + l + sovMaker(uint64(l))
 	l = m.FuryBurned.Size()
 	n += 1 + l + sovMaker(uint64(l))
@@ -2304,7 +2304,7 @@ func (m *PoolBacking) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = m.MerMinted.Size()
+	l = m.BlackMinted.Size()
 	n += 1 + l + sovMaker(uint64(l))
 	l = m.Backing.Size()
 	n += 1 + l + sovMaker(uint64(l))
@@ -2328,7 +2328,7 @@ func (m *TotalCollateral) Size() (n int) {
 	}
 	var l int
 	_ = l
-	l = m.MerDebt.Size()
+	l = m.BlackDebt.Size()
 	n += 1 + l + sovMaker(uint64(l))
 	l = m.FuryCollateralized.Size()
 	n += 1 + l + sovMaker(uint64(l))
@@ -2343,7 +2343,7 @@ func (m *PoolCollateral) Size() (n int) {
 	_ = l
 	l = m.Collateral.Size()
 	n += 1 + l + sovMaker(uint64(l))
-	l = m.MerDebt.Size()
+	l = m.BlackDebt.Size()
 	n += 1 + l + sovMaker(uint64(l))
 	l = m.FuryCollateralized.Size()
 	n += 1 + l + sovMaker(uint64(l))
@@ -2362,7 +2362,7 @@ func (m *AccountCollateral) Size() (n int) {
 	}
 	l = m.Collateral.Size()
 	n += 1 + l + sovMaker(uint64(l))
-	l = m.MerDebt.Size()
+	l = m.BlackDebt.Size()
 	n += 1 + l + sovMaker(uint64(l))
 	l = m.FuryCollateralized.Size()
 	n += 1 + l + sovMaker(uint64(l))
@@ -2499,7 +2499,7 @@ func (m *BackingRiskParams) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 4:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field MaxMerMint", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field MaxBlackMint", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -2528,8 +2528,8 @@ func (m *BackingRiskParams) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			var v github_com_cosmos_cosmos_sdk_types.Int
-			m.MaxMerMint = &v
-			if err := m.MaxMerMint.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			m.MaxBlackMint = &v
+			if err := m.MaxBlackMint.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -2817,7 +2817,7 @@ func (m *CollateralRiskParams) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 4:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field MaxMerMint", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field MaxBlackMint", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -2846,8 +2846,8 @@ func (m *CollateralRiskParams) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			var v github_com_cosmos_cosmos_sdk_types.Int
-			m.MaxMerMint = &v
-			if err := m.MaxMerMint.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			m.MaxBlackMint = &v
+			if err := m.MaxBlackMint.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -4241,7 +4241,7 @@ func (m *TotalBacking) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field MerMinted", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field BlackMinted", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -4268,7 +4268,7 @@ func (m *TotalBacking) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.MerMinted.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.BlackMinted.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -4357,7 +4357,7 @@ func (m *PoolBacking) Unmarshal(dAtA []byte) error {
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field MerMinted", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field BlackMinted", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -4384,7 +4384,7 @@ func (m *PoolBacking) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.MerMinted.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.BlackMinted.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -4556,7 +4556,7 @@ func (m *TotalCollateral) Unmarshal(dAtA []byte) error {
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field MerDebt", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field BlackDebt", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -4583,7 +4583,7 @@ func (m *TotalCollateral) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.MerDebt.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.BlackDebt.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -4705,7 +4705,7 @@ func (m *PoolCollateral) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field MerDebt", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field BlackDebt", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -4732,7 +4732,7 @@ func (m *PoolCollateral) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.MerDebt.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.BlackDebt.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -4886,7 +4886,7 @@ func (m *AccountCollateral) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 3:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field MerDebt", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field BlackDebt", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -4913,7 +4913,7 @@ func (m *AccountCollateral) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.MerDebt.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.BlackDebt.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

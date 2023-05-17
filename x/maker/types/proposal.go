@@ -126,7 +126,7 @@ func validateBackingRiskParams(params *BackingRiskParams) error {
 	if params.MaxBacking != nil && params.MaxBacking.IsNegative() {
 		return fmt.Errorf("max backing value must be not negative")
 	}
-	if params.MaxMerMint != nil && params.MaxMerMint.IsNegative() {
+	if params.MaxBlackMint != nil && params.MaxBlackMint.IsNegative() {
 		return fmt.Errorf("max black mint value must be not negative")
 	}
 	if params.MintFee != nil && (params.MintFee.IsNegative() || params.MintFee.GT(sdk.OneDec())) {
@@ -148,7 +148,7 @@ func validateCollateralRiskParams(params *CollateralRiskParams) error {
 	if params.MaxCollateral != nil && params.MaxCollateral.IsNegative() {
 		return fmt.Errorf("max collateral value must be not negative")
 	}
-	if params.MaxMerMint != nil && params.MaxMerMint.IsNegative() {
+	if params.MaxBlackMint != nil && params.MaxBlackMint.IsNegative() {
 		return fmt.Errorf("max black mint value must be not negative")
 	}
 	if params.LiquidationThreshold != nil && (params.LiquidationThreshold.IsNegative() || params.LiquidationThreshold.GT(sdk.OneDec())) {

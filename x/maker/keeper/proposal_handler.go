@@ -47,13 +47,13 @@ func HandleRegisterBackingProposal(ctx sdk.Context, k Keeper, p *types.RegisterB
 	_, found := k.GetTotalBacking(ctx)
 	if !found {
 		k.SetTotalBacking(ctx, types.TotalBacking{
-			MerMinted:  sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
+			BlackMinted:  sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
 			FuryBurned: sdk.NewCoin(blackfury.AttoFuryDenom, sdk.ZeroInt()),
 		})
 	}
 
 	k.SetPoolBacking(ctx, types.PoolBacking{
-		MerMinted:  sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
+		BlackMinted:  sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
 		Backing:    sdk.NewCoin(params.BackingDenom, sdk.ZeroInt()),
 		FuryBurned: sdk.NewCoin(blackfury.AttoFuryDenom, sdk.ZeroInt()),
 	})
@@ -123,14 +123,14 @@ func HandleRegisterCollateralProposal(ctx sdk.Context, k Keeper, p *types.Regist
 	_, found := k.GetTotalCollateral(ctx)
 	if !found {
 		k.SetTotalCollateral(ctx, types.TotalCollateral{
-			MerDebt:            sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
+			BlackDebt:            sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
 			FuryCollateralized: sdk.NewCoin(blackfury.AttoFuryDenom, sdk.ZeroInt()),
 		})
 	}
 
 	k.SetPoolCollateral(ctx, types.PoolCollateral{
 		Collateral:         sdk.NewCoin(params.CollateralDenom, sdk.ZeroInt()),
-		MerDebt:            sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
+		BlackDebt:            sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
 		FuryCollateralized: sdk.NewCoin(blackfury.AttoFuryDenom, sdk.ZeroInt()),
 	})
 
@@ -179,7 +179,7 @@ func setBackingRiskParamsProposal(ctx sdk.Context, k Keeper, patch *types.Backin
 		updated |= 1
 	}
 	updated |= updateInt(params.MaxBacking, patch.MaxBacking)
-	updated |= updateInt(params.MaxMerMint, patch.MaxMerMint)
+	updated |= updateInt(params.MaxBlackMint, patch.MaxBlackMint)
 	updated |= updateDecimal(params.MintFee, patch.MintFee)
 	updated |= updateDecimal(params.BurnFee, patch.BurnFee)
 	updated |= updateDecimal(params.BuybackFee, patch.BuybackFee)
@@ -217,7 +217,7 @@ func setCollateralRiskParamsProposal(ctx sdk.Context, k Keeper, patch *types.Col
 		updated |= 1
 	}
 	updated |= updateInt(params.MaxCollateral, patch.MaxCollateral)
-	updated |= updateInt(params.MaxMerMint, patch.MaxMerMint)
+	updated |= updateInt(params.MaxBlackMint, patch.MaxBlackMint)
 	updated |= updateDecimal(params.LiquidationThreshold, patch.LiquidationThreshold)
 	updated |= updateDecimal(params.LoanToValue, patch.LoanToValue)
 	updated |= updateDecimal(params.BasicLoanToValue, patch.BasicLoanToValue)

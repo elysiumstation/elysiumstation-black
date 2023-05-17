@@ -3,7 +3,7 @@ package keeper_test
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
-	mertypes "github.com/elysiumstation/blackfury/types"
+	blacktypes "github.com/elysiumstation/blackfury/types"
 	"github.com/elysiumstation/blackfury/x/vesting/keeper"
 	"github.com/elysiumstation/blackfury/x/vesting/types"
 	"github.com/tharsis/ethermint/crypto/ethsecp256k1"
@@ -24,7 +24,7 @@ func (suite *KeeperTestSuite) TestKeeper_Airdrops() {
 	suite.Require().NoError(err)
 	sender := sdk.AccAddress(priv.PubKey().Address())
 	receiver := sdk.AccAddress(suite.address.Bytes())
-	denom := mertypes.AttoFuryDenom
+	denom := blacktypes.AttoFuryDenom
 	k.SetAllocationAddresses(suite.ctx, types.AllocationAddresses{
 		TeamVestingAddr: receiver.String(),
 	})
@@ -82,7 +82,7 @@ func (suite *KeeperTestSuite) TestKeeper_Airdrop() {
 	suite.Require().NoError(err)
 	sender := sdk.AccAddress(priv.PubKey().Address())
 	receiver := sdk.AccAddress(suite.address.Bytes())
-	denom := mertypes.AttoFuryDenom
+	denom := blacktypes.AttoFuryDenom
 	k.SetAllocationAddresses(suite.ctx, types.AllocationAddresses{
 		TeamVestingAddr: receiver.String(),
 	})

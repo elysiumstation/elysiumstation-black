@@ -20,16 +20,16 @@ func (k Keeper) AdjustBackingRatio(ctx sdk.Context) {
 	backingRatio := k.GetBackingRatio(ctx)
 	priceBand := blackfury.MicroFUSDTarget.Mul(k.BackingRatioPriceBand(ctx))
 
-	merPrice, err := k.oracleKeeper.GetExchangeRate(ctx, blackfury.MicroFUSDDenom)
+	blackPrice, err := k.oracleKeeper.GetExchangeRate(ctx, blackfury.MicroFUSDDenom)
 	if err != nil {
 		panic(err)
 	}
 
-	if merPrice.GT(blackfury.MicroFUSDTarget.Add(priceBand)) {
+	if blackPrice.GT(blackfury.MicroFUSDTarget.Add(priceBand)) {
 		// black price is too high
 		// decrease backing ratio; min 0%
 		backingRatio = sdk.MaxDec(backingRatio.Sub(ratioStep), sdk.ZeroDec())
-	} else if merPrice.LT(blackfury.MicroFUSDTarget.Sub(priceBand)) {
+	} else if blackPrice.LT(blackfury.MicroFUSDTarget.Sub(priceBand)) {
 		// black price is too low
 		// increase backing ratio; max 100%
 		backingRatio = sdk.MinDec(backingRatio.Add(ratioStep), sdk.OneDec())

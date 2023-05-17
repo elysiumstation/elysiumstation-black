@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/elysiumstation/blackfury/app"
-	mertypes "github.com/elysiumstation/blackfury/types"
+	blacktypes "github.com/elysiumstation/blackfury/types"
 	"github.com/elysiumstation/blackfury/x/ve/types"
 	"github.com/stretchr/testify/require"
 )
@@ -26,34 +26,34 @@ func TestMsgCreate_ValidateBasic(t *testing.T) {
 		},
 		{
 			desc:   "invalid receiver address",
-			sender: "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			to:     "xxx",
 		},
 		{
 			desc:   "ErrAmountNotPositive",
-			sender: "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
-			to:     "mer1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
-			amount: sdk.NewCoin(mertypes.AttoFuryDenom, sdk.NewInt(0)),
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			to:     "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
+			amount: sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(0)),
 		},
 		{
 			desc:         "ErrPastLockTime",
-			sender:       "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
-			to:           "mer1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
-			amount:       sdk.NewCoin(mertypes.AttoFuryDenom, sdk.NewInt(1)),
+			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			to:           "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
+			amount:       sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(1)),
 			lockDuration: 0,
 		},
 		{
 			desc:         "ErrTooLongLockTime",
-			sender:       "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
-			to:           "mer1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
-			amount:       sdk.NewCoin(mertypes.AttoFuryDenom, sdk.NewInt(1)),
+			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			to:           "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
+			amount:       sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(1)),
 			lockDuration: types.MaxLockTime + 1,
 		},
 		{
 			desc:         "valid",
-			sender:       "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
-			to:           "mer1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
-			amount:       sdk.NewCoin(mertypes.AttoFuryDenom, sdk.NewInt(1)),
+			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			to:           "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
+			amount:       sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(1)),
 			lockDuration: types.MaxLockTime - 1,
 			valid:        true,
 		},
@@ -78,9 +78,9 @@ func TestMsgCreate_ValidateBasic(t *testing.T) {
 func TestMsgCreate_GetSigners(t *testing.T) {
 	app.Setup(false)
 	msg := &types.MsgCreate{
-		Sender:       "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
-		To:           "mer1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
-		Amount:       sdk.NewCoin(mertypes.AttoFuryDenom, sdk.NewInt(1)),
+		Sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+		To:           "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
+		Amount:       sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(1)),
 		LockDuration: uint64(100000),
 	}
 	signers := msg.GetSigners()
@@ -104,20 +104,20 @@ func TestMsgDeposit_ValidateBasic(t *testing.T) {
 		},
 		{
 			desc:   "invalid veId",
-			sender: "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			veId:   "xxx",
 		},
 		{
 			desc:   "ErrAmountNotPositive",
-			sender: "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			veId:   "ve-100",
-			amount: sdk.NewCoin(mertypes.AttoFuryDenom, sdk.NewInt(0)),
+			amount: sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(0)),
 		},
 		{
 			desc:   "valid",
-			sender: "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			veId:   "ve-100",
-			amount: sdk.NewCoin(mertypes.AttoFuryDenom, sdk.NewInt(1)),
+			amount: sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(1)),
 			valid:  true,
 		},
 	} {
@@ -140,9 +140,9 @@ func TestMsgDeposit_ValidateBasic(t *testing.T) {
 func TestMsgDeposit_GetSigners(t *testing.T) {
 	app.Setup(false)
 	msg := &types.MsgDeposit{
-		Sender: "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+		Sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 		VeId:   "ve-100",
-		Amount: sdk.NewCoin(mertypes.AttoFuryDenom, sdk.NewInt(1)),
+		Amount: sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(1)),
 	}
 	signers := msg.GetSigners()
 	sender, err := sdk.AccAddressFromBech32(msg.Sender)
@@ -165,24 +165,24 @@ func TestMsgExtendTime_ValidateBasic(t *testing.T) {
 		},
 		{
 			desc:   "invalid veId",
-			sender: "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			veId:   "xxx",
 		},
 		{
 			desc:         "ErrPastLockTime",
-			sender:       "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			veId:         "ve-100",
 			lockDuration: 0,
 		},
 		{
 			desc:         "ErrTooLongLockTime",
-			sender:       "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			veId:         "ve-100",
 			lockDuration: types.MaxLockTime + 1,
 		},
 		{
 			desc:         "valid",
-			sender:       "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			veId:         "ve-100",
 			lockDuration: types.MaxLockTime - 1,
 			valid:        true,
@@ -207,7 +207,7 @@ func TestMsgExtendTime_ValidateBasic(t *testing.T) {
 func TestMsgExtendTime_GetSigners(t *testing.T) {
 	app.Setup(false)
 	msg := &types.MsgExtendTime{
-		Sender:       "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+		Sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 		VeId:         "ve-100",
 		LockDuration: types.MaxLockTime - 1,
 	}
@@ -232,24 +232,24 @@ func TestMsgMerge_ValidateBasic(t *testing.T) {
 		},
 		{
 			desc:     "invalid fromVeId",
-			sender:   "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			fromVeId: "xxx",
 		},
 		{
 			desc:     "invalid toVeId",
-			sender:   "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			fromVeId: "ve-100",
 			toVeId:   "xxx",
 		},
 		{
 			desc:     "fromVeId != toVeId",
-			sender:   "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			fromVeId: "ve-100",
 			toVeId:   "ve-100",
 		},
 		{
 			desc:     "valid",
-			sender:   "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			fromVeId: "ve-100",
 			toVeId:   "ve-200",
 			valid:    true,
@@ -274,7 +274,7 @@ func TestMsgMerge_ValidateBasic(t *testing.T) {
 func TestMsgMerge_GetSigners(t *testing.T) {
 	app.Setup(false)
 	msg := &types.MsgMerge{
-		Sender:   "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+		Sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 		FromVeId: "ve-100",
 		ToVeId:   "ve-200",
 	}
@@ -298,12 +298,12 @@ func TestMsgWithdraw_ValidateBasic(t *testing.T) {
 		},
 		{
 			desc:   "invalid veId",
-			sender: "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			veId:   "xxx",
 		},
 		{
 			desc:   "valid",
-			sender: "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 			veId:   "ve-100",
 			valid:  true,
 		},
@@ -326,7 +326,7 @@ func TestMsgWithdraw_ValidateBasic(t *testing.T) {
 func TestMsgWithdraw_GetSigners(t *testing.T) {
 	app.Setup(false)
 	msg := &types.MsgWithdraw{
-		Sender: "mer1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+		Sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
 		VeId:   "ve-100",
 	}
 	signers := msg.GetSigners()

@@ -68,7 +68,7 @@ func (suite *KeeperTestSuite) TestSetGetCollateralRiskParams() {
 
 func (suite *KeeperTestSuite) dummyBackingRiskParams() (brp, brp2 types.BackingRiskParams) {
 	maxBacking := sdk.NewInt(10_100000)
-	maxMerMint := sdk.NewInt(10_000000)
+	maxBlackMint := sdk.NewInt(10_000000)
 	mintFee := sdk.NewDecWithPrec(5, 3)
 	burnFee := sdk.NewDecWithPrec(6, 3)
 	buybackFee := sdk.NewDecWithPrec(7, 3)
@@ -77,7 +77,7 @@ func (suite *KeeperTestSuite) dummyBackingRiskParams() (brp, brp2 types.BackingR
 		BackingDenom: suite.bcDenom,
 		Enabled:      true,
 		MaxBacking:   &maxBacking,
-		MaxMerMint:   &maxMerMint,
+		MaxBlackMint:   &maxBlackMint,
 		MintFee:      &mintFee,
 		BurnFee:      &burnFee,
 		BuybackFee:   &buybackFee,
@@ -85,7 +85,7 @@ func (suite *KeeperTestSuite) dummyBackingRiskParams() (brp, brp2 types.BackingR
 	}
 
 	maxBacking2 := sdk.NewInt(200)
-	maxMerMint2 := sdk.NewInt(2000_000000)
+	maxBlackMint2 := sdk.NewInt(2000_000000)
 	mintFee2 := sdk.NewDecWithPrec(6, 3)
 	burnFee2 := sdk.NewDecWithPrec(7, 3)
 	buybackFee2 := sdk.NewDecWithPrec(8, 3)
@@ -94,7 +94,7 @@ func (suite *KeeperTestSuite) dummyBackingRiskParams() (brp, brp2 types.BackingR
 		BackingDenom: "eth",
 		Enabled:      false,
 		MaxBacking:   &maxBacking2,
-		MaxMerMint:   &maxMerMint2,
+		MaxBlackMint:   &maxBlackMint2,
 		MintFee:      &mintFee2,
 		BurnFee:      &burnFee2,
 		BuybackFee:   &buybackFee2,
@@ -106,7 +106,7 @@ func (suite *KeeperTestSuite) dummyBackingRiskParams() (brp, brp2 types.BackingR
 
 func (suite *KeeperTestSuite) dummyCollateralRiskParams() (crp, crp2 types.CollateralRiskParams) {
 	maxCollateral := sdk.NewInt(16_000000)
-	maxMerMint := sdk.NewInt(10_000000)
+	maxBlackMint := sdk.NewInt(10_000000)
 	liquidationThreshold := sdk.NewDecWithPrec(90, 2)
 	loanToValue := sdk.NewDecWithPrec(80, 2)
 	basicLoanToValue := sdk.NewDecWithPrec(50, 2)
@@ -118,7 +118,7 @@ func (suite *KeeperTestSuite) dummyCollateralRiskParams() (crp, crp2 types.Colla
 		CollateralDenom:      suite.bcDenom,
 		Enabled:              true,
 		MaxCollateral:        &maxCollateral,
-		MaxMerMint:           &maxMerMint,
+		MaxBlackMint:           &maxBlackMint,
 		LiquidationThreshold: &liquidationThreshold,
 		LoanToValue:          &loanToValue,
 		BasicLoanToValue:     &basicLoanToValue,
@@ -129,7 +129,7 @@ func (suite *KeeperTestSuite) dummyCollateralRiskParams() (crp, crp2 types.Colla
 	}
 
 	maxCollateral2 := sdk.NewInt(200)
-	maxMerMint2 := sdk.NewInt(20)
+	maxBlackMint2 := sdk.NewInt(20)
 	liquidationThreshold2 := sdk.NewDecWithPrec(91, 2)
 	loanToValue2 := sdk.NewDecWithPrec(71, 2)
 	basicLoanToValue2 := sdk.NewDecWithPrec(51, 2)
@@ -141,7 +141,7 @@ func (suite *KeeperTestSuite) dummyCollateralRiskParams() (crp, crp2 types.Colla
 		CollateralDenom:      "eth",
 		Enabled:              false,
 		MaxCollateral:        &maxCollateral2,
-		MaxMerMint:           &maxMerMint2,
+		MaxBlackMint:           &maxBlackMint2,
 		LiquidationThreshold: &liquidationThreshold2,
 		LoanToValue:          &loanToValue2,
 		BasicLoanToValue:     &basicLoanToValue2,

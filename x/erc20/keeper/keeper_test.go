@@ -10,7 +10,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/staking/teststaking"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/elysiumstation/blackfury/app"
-	mertypes "github.com/elysiumstation/blackfury/types"
+	blacktypes "github.com/elysiumstation/blackfury/types"
 	"github.com/stretchr/testify/suite"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 	tmversion "github.com/tendermint/tendermint/proto/tendermint/version"
@@ -73,7 +73,7 @@ func (suite *KeeperTestSuite) SetupTest() {
 
 	// setup validator
 	tstaking := teststaking.NewHelper(suite.T(), suite.ctx, suite.app.StakingKeeper.Keeper)
-	tstaking.Denom = mertypes.AttoFuryDenom
+	tstaking.Denom = blacktypes.AttoFuryDenom
 
 	// create validator with 50% commission
 	tstaking.Commission = stakingtypes.NewCommissionRates(sdk.NewDecWithPrec(5, 1), sdk.NewDecWithPrec(5, 1), sdk.NewDec(0))

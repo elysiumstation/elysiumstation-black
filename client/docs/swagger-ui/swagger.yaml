@@ -328,7 +328,7 @@ paths:
                 items:
                   type: object
                   properties:
-                    mer_minted:
+                    black_minted:
                       title: total minted black; negative value means burned black
                       type: object
                       properties:
@@ -425,7 +425,7 @@ paths:
                     max_backing:
                       type: string
                       title: maximum total backing amount
-                    max_mer_mint:
+                    max_black_mint:
                       type: string
                       title: maximum mintable Black amount
                     mint_fee:
@@ -498,7 +498,7 @@ paths:
                         custom method
 
                         signatures required by gogoproto.
-                    mer_debt:
+                    black_debt:
                       title: >-
                         total existing black debt, including minted by
                         collateral, mint fee, last
@@ -583,7 +583,7 @@ paths:
                     max_collateral:
                       type: string
                       title: maximum total collateral amount; empty means no limit
-                    max_mer_mint:
+                    max_black_mint:
                       type: string
                       title: >-
                         maximum total mintable Black amount; empty means no
@@ -667,7 +667,7 @@ paths:
               backing_pool:
                 type: object
                 properties:
-                  mer_minted:
+                  black_minted:
                     title: total minted black; negative value means burned black
                     type: object
                     properties:
@@ -815,7 +815,7 @@ paths:
                       custom method
 
                       signatures required by gogoproto.
-                  mer_debt:
+                  black_debt:
                     title: >-
                       remaining black debt, including minted by collateral, mint
                       fee, last
@@ -933,7 +933,7 @@ paths:
                       custom method
 
                       signatures required by gogoproto.
-                  mer_debt:
+                  black_debt:
                     title: >-
                       total existing black debt, including minted by collateral,
                       mint fee, last
@@ -1793,7 +1793,7 @@ paths:
                   backing_value:
                     type: string
                     title: total backing value in uUSD
-                  mer_minted:
+                  black_minted:
                     type: object
                     properties:
                       denom:
@@ -1862,7 +1862,7 @@ paths:
               total_collateral:
                 type: object
                 properties:
-                  mer_debt:
+                  black_debt:
                     type: object
                     properties:
                       denom:
@@ -31016,7 +31016,7 @@ definitions:
 
           NOTE: The amount field is an Int which implements the custom method
           signatures required by gogoproto.
-      mer_debt:
+      black_debt:
         title: |-
           remaining black debt, including minted by collateral, mint fee, last
           interest
@@ -31074,7 +31074,7 @@ definitions:
       max_backing:
         type: string
         title: maximum total backing amount
-      max_mer_mint:
+      max_black_mint:
         type: string
         title: maximum mintable Black amount
       mint_fee:
@@ -31103,7 +31103,7 @@ definitions:
       max_collateral:
         type: string
         title: maximum total collateral amount; empty means no limit
-      max_mer_mint:
+      max_black_mint:
         type: string
         title: maximum total mintable Black amount; empty means no limit
       liquidation_threshold:
@@ -31455,7 +31455,7 @@ definitions:
   blackfury.maker.v1.PoolBacking:
     type: object
     properties:
-      mer_minted:
+      black_minted:
         title: total minted black; negative value means burned black
         type: object
         properties:
@@ -31510,7 +31510,7 @@ definitions:
 
           NOTE: The amount field is an Int which implements the custom method
           signatures required by gogoproto.
-      mer_debt:
+      black_debt:
         title: >-
           total existing black debt, including minted by collateral, mint fee,
           last
@@ -31548,7 +31548,7 @@ definitions:
         items:
           type: object
           properties:
-            mer_minted:
+            black_minted:
               title: total minted black; negative value means burned black
               type: object
               properties:
@@ -31614,7 +31614,7 @@ definitions:
             max_backing:
               type: string
               title: maximum total backing amount
-            max_mer_mint:
+            max_black_mint:
               type: string
               title: maximum mintable Black amount
             mint_fee:
@@ -31656,7 +31656,7 @@ definitions:
                 method
 
                 signatures required by gogoproto.
-            mer_debt:
+            black_debt:
               title: >-
                 total existing black debt, including minted by collateral, mint
                 fee, last
@@ -31710,7 +31710,7 @@ definitions:
             max_collateral:
               type: string
               title: maximum total collateral amount; empty means no limit
-            max_mer_mint:
+            max_black_mint:
               type: string
               title: maximum total mintable Black amount; empty means no limit
             liquidation_threshold:
@@ -31759,7 +31759,7 @@ definitions:
       backing_pool:
         type: object
         properties:
-          mer_minted:
+          black_minted:
             title: total minted black; negative value means burned black
             type: object
             properties:
@@ -31840,7 +31840,7 @@ definitions:
               method
 
               signatures required by gogoproto.
-          mer_debt:
+          black_debt:
             title: >-
               remaining black debt, including minted by collateral, mint fee,
               last
@@ -31918,7 +31918,7 @@ definitions:
               method
 
               signatures required by gogoproto.
-          mer_debt:
+          black_debt:
             title: >-
               total existing black debt, including minted by collateral, mint
               fee, last
@@ -31993,7 +31993,7 @@ definitions:
           backing_value:
             type: string
             title: total backing value in uUSD
-          mer_minted:
+          black_minted:
             type: object
             properties:
               denom:
@@ -32031,7 +32031,7 @@ definitions:
       total_collateral:
         type: object
         properties:
-          mer_debt:
+          black_debt:
             type: object
             properties:
               denom:
@@ -32073,7 +32073,7 @@ definitions:
       backing_value:
         type: string
         title: total backing value in uUSD
-      mer_minted:
+      black_minted:
         type: object
         properties:
           denom:
@@ -32102,7 +32102,7 @@ definitions:
   blackfury.maker.v1.TotalCollateral:
     type: object
     properties:
-      mer_debt:
+      black_debt:
         type: object
         properties:
           denom:

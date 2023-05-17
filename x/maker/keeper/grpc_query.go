@@ -88,7 +88,7 @@ func (k Keeper) CollateralOfAccount(c context.Context, req *types.QueryCollatera
 		collateral = types.AccountCollateral{
 			Account:             account.String(),
 			Collateral:          sdk.NewCoin(req.CollateralDenom, sdk.ZeroInt()),
-			MerDebt:             sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
+			BlackDebt:             sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
 			FuryCollateralized:  sdk.NewCoin(blackfury.AttoFuryDenom, sdk.ZeroInt()),
 			LastInterest:        sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
 			LastSettlementBlock: ctx.BlockHeight(),

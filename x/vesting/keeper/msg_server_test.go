@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	mertypes "github.com/elysiumstation/blackfury/types"
+	blacktypes "github.com/elysiumstation/blackfury/types"
 	"github.com/elysiumstation/blackfury/x/vesting/keeper"
 	"github.com/elysiumstation/blackfury/x/vesting/types"
 	"github.com/tharsis/ethermint/crypto/ethsecp256k1"
@@ -18,7 +18,7 @@ func (suite *KeeperTestSuite) TestAddAirdrops() {
 	require.NoError(err)
 	sender := sdk.AccAddress(priv.PubKey().Address())
 	receiver := sdk.AccAddress(suite.address.Bytes())
-	denom := mertypes.AttoFuryDenom
+	denom := blacktypes.AttoFuryDenom
 	k.SetAllocationAddresses(suite.ctx, types.AllocationAddresses{
 		TeamVestingAddr:               receiver.String(),
 		StrategicReserveCustodianAddr: receiver.String(),
@@ -77,7 +77,7 @@ func (suite *KeeperTestSuite) TestExecuteAirdrops() {
 	require.NoError(err)
 	sender := sdk.AccAddress(priv.PubKey().Address())
 	receiver := sdk.AccAddress(suite.address.Bytes())
-	denom := mertypes.AttoFuryDenom
+	denom := blacktypes.AttoFuryDenom
 	k.SetAllocationAddresses(suite.ctx, types.AllocationAddresses{
 		TeamVestingAddr:               receiver.String(),
 		StrategicReserveCustodianAddr: receiver.String(),

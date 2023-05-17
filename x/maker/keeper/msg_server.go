@@ -44,11 +44,11 @@ func (m msgServer) MintBySwap(c context.Context, msg *types.MsgMintBySwap) (*typ
 		return nil, err
 	}
 
-	poolBacking.MerMinted = poolBacking.MerMinted.Add(mintTotal)
+	poolBacking.BlackMinted = poolBacking.BlackMinted.Add(mintTotal)
 	poolBacking.Backing = poolBacking.Backing.Add(backingIn)
 	poolBacking.FuryBurned = poolBacking.FuryBurned.Add(furyIn)
 
-	totalBacking.MerMinted = totalBacking.MerMinted.Add(mintTotal)
+	totalBacking.BlackMinted = totalBacking.BlackMinted.Add(mintTotal)
 	totalBacking.FuryBurned = totalBacking.FuryBurned.Add(furyIn)
 
 	m.Keeper.SetPoolBacking(ctx, poolBacking)
@@ -135,9 +135,9 @@ func (m msgServer) BurnBySwap(c context.Context, msg *types.MsgBurnBySwap) (*typ
 	// here use Int.Sub() to bypass Coin.Sub() negativeness check
 	poolBacking.FuryBurned.Amount = poolBacking.FuryBurned.Amount.Sub(furyOut.Amount)
 	totalBacking.FuryBurned.Amount = totalBacking.FuryBurned.Amount.Sub(furyOut.Amount)
-	// allow MerMinted to be negative which means burned black
-	poolBacking.MerMinted.Amount = poolBacking.MerMinted.Amount.Sub(burnActual.Amount)
-	totalBacking.MerMinted.Amount = totalBacking.MerMinted.Amount.Sub(burnActual.Amount)
+	// allow BlackMinted to be negative which means burned black
+	poolBacking.BlackMinted.Amount = poolBacking.BlackMinted.Amount.Sub(burnActual.Amount)
+	totalBacking.BlackMinted.Amount = totalBacking.BlackMinted.Amount.Sub(burnActual.Amount)
 
 	m.Keeper.SetPoolBacking(ctx, poolBacking)
 	m.Keeper.SetTotalBacking(ctx, totalBacking)
@@ -401,18 +401,18 @@ func (m msgServer) BurnByCollateral(c context.Context, msg *types.MsgBurnByColla
 	settleInterestFee(ctx, &accColl, &poolColl, &totalColl, *collateralParams.InterestFee)
 
 	// compute burn-in, repay interest first
-	if !accColl.MerDebt.IsPositive() {
+	if !accColl.BlackDebt.IsPositive() {
 		return nil, sdkerrors.Wrapf(types.ErrAccountNoDebt, "account has no debt for %s collateral", collateralDenom)
 	}
-	repayIn := sdk.NewCoin(msg.RepayInMax.Denom, sdk.MinInt(accColl.MerDebt.Amount, msg.RepayInMax.Amount))
+	repayIn := sdk.NewCoin(msg.RepayInMax.Denom, sdk.MinInt(accColl.BlackDebt.Amount, msg.RepayInMax.Amount))
 	repayInterest := sdk.NewCoin(msg.RepayInMax.Denom, sdk.MinInt(accColl.LastInterest.Amount, repayIn.Amount))
 	burn := repayIn.Sub(repayInterest)
 
 	// update debt
 	accColl.LastInterest = accColl.LastInterest.Sub(repayInterest)
-	accColl.MerDebt = accColl.MerDebt.Sub(repayIn)
-	poolColl.MerDebt = poolColl.MerDebt.Sub(repayIn)
-	totalColl.MerDebt = totalColl.MerDebt.Sub(repayIn)
+	accColl.BlackDebt = accColl.BlackDebt.Sub(repayIn)
+	poolColl.BlackDebt = poolColl.BlackDebt.Sub(repayIn)
+	totalColl.BlackDebt = totalColl.BlackDebt.Sub(repayIn)
 
 	// eventually update collateral
 	m.Keeper.SetAccountCollateral(ctx, sender, accColl)
@@ -544,7 +544,7 @@ func (m msgServer) RedeemCollateral(c context.Context, msg *types.MsgRedeemColla
 		return nil, err
 	}
 
-	if accColl.MerDebt.Amount.ToDec().Mul(blackfury.MicroFUSDTarget).GT(maxDebtInUSD) {
+	if accColl.BlackDebt.Amount.ToDec().Mul(blackfury.MicroFUSDTarget).GT(maxDebtInUSD) {
 		return nil, sdkerrors.Wrapf(types.ErrAccountInsufficientCollateral, "account collateral insufficient: %s", collateralDenom)
 	}
 
@@ -606,7 +606,7 @@ func (m msgServer) LiquidateCollateral(c context.Context, msg *types.MsgLiquidat
 
 	// check whether undercollateralized
 	liquidationValue := accColl.Collateral.Amount.ToDec().Mul(collateralPrice).Mul(*collateralParams.LiquidationThreshold)
-	if accColl.MerDebt.Amount.ToDec().Mul(blackfury.MicroFUSDTarget).LT(liquidationValue) {
+	if accColl.BlackDebt.Amount.ToDec().Mul(blackfury.MicroFUSDTarget).LT(liquidationValue) {
 		return nil, sdkerrors.Wrap(types.ErrNotUndercollateralized, "")
 	}
 
@@ -620,19 +620,19 @@ func (m msgServer) LiquidateCollateral(c context.Context, msg *types.MsgLiquidat
 	repayIn := sdk.NewCoin(blackfury.MicroFUSDDenom, msg.Collateral.Amount.ToDec().Sub(liquidationFee).Mul(collateralPrice).Quo(blackfury.MicroFUSDTarget).TruncateInt())
 
 	if msg.RepayInMax.IsLT(repayIn) {
-		return nil, sdkerrors.Wrap(types.ErrMerSlippage, "")
+		return nil, sdkerrors.Wrap(types.ErrBlackSlippage, "")
 	}
 
 	// repay for debtor as much as possible, and repay interest first
-	repayDebt := sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.MinInt(accColl.MerDebt.Amount, repayIn.Amount))
-	merRefund := repayIn.Sub(repayDebt)
+	repayDebt := sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.MinInt(accColl.BlackDebt.Amount, repayIn.Amount))
+	blackRefund := repayIn.Sub(repayDebt)
 
 	repayInterest := sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.MinInt(accColl.LastInterest.Amount, repayDebt.Amount))
 	accColl.LastInterest = accColl.LastInterest.Sub(repayInterest)
 
-	accColl.MerDebt = accColl.MerDebt.Sub(repayDebt)
-	poolColl.MerDebt = poolColl.MerDebt.Sub(repayDebt)
-	totalColl.MerDebt = totalColl.MerDebt.Sub(repayDebt)
+	accColl.BlackDebt = accColl.BlackDebt.Sub(repayDebt)
+	poolColl.BlackDebt = poolColl.BlackDebt.Sub(repayDebt)
+	totalColl.BlackDebt = totalColl.BlackDebt.Sub(repayDebt)
 	accColl.Collateral = accColl.Collateral.Sub(msg.Collateral)
 	poolColl.Collateral = poolColl.Collateral.Sub(msg.Collateral)
 
@@ -652,8 +652,8 @@ func (m msgServer) LiquidateCollateral(c context.Context, msg *types.MsgLiquidat
 		return nil, err
 	}
 	// send excess black to debtor
-	if merRefund.IsPositive() {
-		err = m.Keeper.bankKeeper.SendCoinsFromModuleToAccount(ctx, types.ModuleName, debtor, sdk.NewCoins(merRefund))
+	if blackRefund.IsPositive() {
+		err = m.Keeper.bankKeeper.SendCoinsFromModuleToAccount(ctx, types.ModuleName, debtor, sdk.NewCoins(blackRefund))
 		if err != nil {
 			return nil, err
 		}
@@ -719,7 +719,7 @@ func (k Keeper) getCollateral(ctx sdk.Context, account sdk.AccAddress, denom str
 			acc = types.AccountCollateral{
 				Account:             account.String(),
 				Collateral:          sdk.NewCoin(denom, sdk.ZeroInt()),
-				MerDebt:             sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
+				BlackDebt:             sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
 				FuryCollateralized:  sdk.NewCoin(blackfury.AttoFuryDenom, sdk.ZeroInt()),
 				LastInterest:        sdk.NewCoin(blackfury.MicroFUSDDenom, sdk.ZeroInt()),
 				LastSettlementBlock: ctx.BlockHeight(),
@@ -740,15 +740,15 @@ func settleInterestFee(ctx sdk.Context, acc *types.AccountCollateral, pool *type
 	}
 
 	// principal debt, excluding interest debt
-	principalDebt := acc.MerDebt.Sub(acc.LastInterest)
+	principalDebt := acc.BlackDebt.Sub(acc.LastInterest)
 	interestOfPeriod := principalDebt.Amount.ToDec().Mul(apr).MulInt64(period).QuoInt64(int64(blackfury.BlocksPerYear)).RoundInt()
 
 	// update remaining interest accumulation
 	acc.LastInterest = acc.LastInterest.AddAmount(interestOfPeriod)
 	// update debt
-	acc.MerDebt = acc.MerDebt.AddAmount(interestOfPeriod)
-	pool.MerDebt = pool.MerDebt.AddAmount(interestOfPeriod)
-	total.MerDebt = total.MerDebt.AddAmount(interestOfPeriod)
+	acc.BlackDebt = acc.BlackDebt.AddAmount(interestOfPeriod)
+	pool.BlackDebt = pool.BlackDebt.AddAmount(interestOfPeriod)
+	total.BlackDebt = total.BlackDebt.AddAmount(interestOfPeriod)
 	// update settlement block
 	acc.LastSettlementBlock = ctx.BlockHeight()
 }

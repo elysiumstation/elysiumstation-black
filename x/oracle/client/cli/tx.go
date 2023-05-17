@@ -56,7 +56,7 @@ $ blackfuryd tx oracle aggregate-prevote 1234 afury:1.234,ufusd:0.99
 where "afury,ufusd" is the denominating currencies, and "1.234,0.99" is the exchange rates of these currencies in $uUSD from the voter's point of view.
 
 If voting from a voting delegate, set "validator" to the address of the validator to vote on behalf of:
-$ blackfuryd tx oracle aggregate-prevote 1234 afury:1.234,ufusd:0.99 mervaloper1...
+$ blackfuryd tx oracle aggregate-prevote 1234 afury:1.234,ufusd:0.99 did:fury:blackvaloper1...
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
@@ -117,7 +117,7 @@ where "afury,ufusd" is the denominating currencies, and "1.234,0.99" is the exch
 "salt" should match the salt used to generate the SHA256 hex in the aggregated pre-vote. 
 
 If voting from a voting delegate, set "validator" to the address of the validator to vote on behalf of:
-$ blackfuryd tx oracle aggregate-vote 1234 afury:1.234,ufusd:0.99 mervaloper1...
+$ blackfuryd tx oracle aggregate-vote 1234 afury:1.234,ufusd:0.99 did:fury:blackvaloper1...
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
@@ -172,9 +172,9 @@ Delegate the permission to submit exchange rate votes for the oracle to an addre
 
 Delegation can keep your validator operator key offline and use a separate replaceable key online.
 
-$ blackfuryd tx oracle set-feeder mer1...
+$ blackfuryd tx oracle set-feeder did:fury:black1...
 
-where "mer1..." is the address you want to delegate your voting rights to.
+where "did:fury:black1..." is the address you want to delegate your voting rights to.
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)

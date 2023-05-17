@@ -50,9 +50,9 @@ func (k Keeper) calculateMintBySwapIn(
 	if err != nil {
 		return
 	}
-	poolBacking.MerMinted = poolBacking.MerMinted.Add(mintTotal)
-	if backingParams.MaxMerMint != nil && poolBacking.MerMinted.Amount.GT(*backingParams.MaxMerMint) {
-		err = sdkerrors.Wrapf(types.ErrMerCeiling, "black over ceiling")
+	poolBacking.BlackMinted = poolBacking.BlackMinted.Add(mintTotal)
+	if backingParams.MaxBlackMint != nil && poolBacking.BlackMinted.Amount.GT(*backingParams.MaxBlackMint) {
+		err = sdkerrors.Wrapf(types.ErrBlackCeiling, "black over ceiling")
 		return
 	}
 
@@ -157,9 +157,9 @@ func (k Keeper) calculateMintBySwapOut(
 		return
 	}
 
-	poolBacking.MerMinted = poolBacking.MerMinted.AddAmount(mintTotal.Amount)
-	if backingParams.MaxMerMint != nil && poolBacking.MerMinted.Amount.GT(*backingParams.MaxMerMint) {
-		err = sdkerrors.Wrap(types.ErrMerCeiling, "")
+	poolBacking.BlackMinted = poolBacking.BlackMinted.AddAmount(mintTotal.Amount)
+	if backingParams.MaxBlackMint != nil && poolBacking.BlackMinted.Amount.GT(*backingParams.MaxBlackMint) {
+		err = sdkerrors.Wrap(types.ErrBlackCeiling, "")
 		return
 	}
 
@@ -586,12 +586,12 @@ func (k Keeper) calculateMintByCollateral(
 	mintTotal := mintOut.Add(mintFee)
 
 	// update black debt
-	accColl.MerDebt = accColl.MerDebt.Add(mintTotal)
-	poolColl.MerDebt = poolColl.MerDebt.Add(mintTotal)
-	totalColl.MerDebt = totalColl.MerDebt.Add(mintTotal)
+	accColl.BlackDebt = accColl.BlackDebt.Add(mintTotal)
+	poolColl.BlackDebt = poolColl.BlackDebt.Add(mintTotal)
+	totalColl.BlackDebt = totalColl.BlackDebt.Add(mintTotal)
 
-	if collateralParams.MaxMerMint != nil && poolColl.MerDebt.Amount.GT(*collateralParams.MaxMerMint) {
-		err = sdkerrors.Wrapf(types.ErrMerCeiling, "")
+	if collateralParams.MaxBlackMint != nil && poolColl.BlackDebt.Amount.GT(*collateralParams.MaxBlackMint) {
+		err = sdkerrors.Wrapf(types.ErrBlackCeiling, "")
 		return
 	}
 
@@ -611,7 +611,7 @@ func (k Keeper) calculateMintByCollateral(
 	}
 	availableDebtMax := collateralValue.Mul(availableLTV).Quo(blackfury.MicroFUSDTarget).TruncateInt()
 
-	if availableDebtMax.LT(accColl.MerDebt.Amount) {
+	if availableDebtMax.LT(accColl.BlackDebt.Amount) {
 		err = sdkerrors.Wrapf(types.ErrAccountInsufficientCollateral, "")
 		return
 	}
@@ -628,27 +628,27 @@ func computeFee(coin sdk.Coin, rate *sdk.Dec) sdk.Coin {
 }
 
 func (k Keeper) checkMintPriceLowerBound(ctx sdk.Context) error {
-	merPrice, err := k.oracleKeeper.GetExchangeRate(ctx, blackfury.MicroFUSDDenom)
+	blackPrice, err := k.oracleKeeper.GetExchangeRate(ctx, blackfury.MicroFUSDDenom)
 	if err != nil {
 		return err
 	}
 	// market price must be >= target price + mint bias
 	mintPriceLowerBound := blackfury.MicroFUSDTarget.Mul(sdk.OneDec().Add(k.MintPriceBias(ctx)))
-	if merPrice.LT(mintPriceLowerBound) {
-		return sdkerrors.Wrapf(types.ErrMerPriceTooLow, "%s price too low: %s", blackfury.MicroFUSDDenom, merPrice)
+	if blackPrice.LT(mintPriceLowerBound) {
+		return sdkerrors.Wrapf(types.ErrBlackPriceTooLow, "%s price too low: %s", blackfury.MicroFUSDDenom, blackPrice)
 	}
 	return nil
 }
 
 func (k Keeper) checkBurnPriceUpperBound(ctx sdk.Context) error {
-	merPrice, err := k.oracleKeeper.GetExchangeRate(ctx, blackfury.MicroFUSDDenom)
+	blackPrice, err := k.oracleKeeper.GetExchangeRate(ctx, blackfury.MicroFUSDDenom)
 	if err != nil {
 		return err
 	}
 	// market price must be <= target price - burn bias
 	burnPriceUpperBound := blackfury.MicroFUSDTarget.Mul(sdk.OneDec().Sub(k.BurnPriceBias(ctx)))
-	if merPrice.GT(burnPriceUpperBound) {
-		return sdkerrors.Wrapf(types.ErrMerPriceTooHigh, "%s price too high: %s", blackfury.MicroFUSDDenom, merPrice)
+	if blackPrice.GT(burnPriceUpperBound) {
+		return sdkerrors.Wrapf(types.ErrBlackPriceTooHigh, "%s price too high: %s", blackfury.MicroFUSDDenom, blackPrice)
 	}
 	return nil
 }
@@ -687,7 +687,7 @@ func (k Keeper) getExcessBackingValue(ctx sdk.Context) (excessBackingValue sdk.I
 	}
 
 	backingRatio := k.GetBackingRatio(ctx)
-	requiredBackingValue := totalBacking.MerMinted.Amount.ToDec().Mul(backingRatio).Ceil().TruncateInt()
+	requiredBackingValue := totalBacking.BlackMinted.Amount.ToDec().Mul(backingRatio).Ceil().TruncateInt()
 	if requiredBackingValue.IsNegative() {
 		requiredBackingValue = sdk.ZeroInt()
 	}
