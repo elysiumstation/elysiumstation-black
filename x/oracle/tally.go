@@ -43,12 +43,12 @@ func ballotIsPassing(ballot types.ExchangeRateBallot, thresholdVotes sdk.Int) (s
 	return ballotPower, !ballotPower.IsZero() && ballotPower.GTE(thresholdVotes)
 }
 
-// PickReferenceMer chooses Reference Black with the highest voter turnout.
+// PickReferenceBlack chooses Reference Black with the highest voter turnout.
 // If the voting power of the two denominations is the same,
 // select reference Black in alphabetical order.
-func PickReferenceMer(ctx sdk.Context, k keeper.Keeper, voteTargets map[string]struct{}, voteMap map[string]types.ExchangeRateBallot) string {
+func PickReferenceBlack(ctx sdk.Context, k keeper.Keeper, voteTargets map[string]struct{}, voteMap map[string]types.ExchangeRateBallot) string {
 	largestBallotPower := int64(0)
-	referenceMer := ""
+	referenceBlack := ""
 
 	stakingKeeper := k.StakingKeeper()
 	totalBondedPower := sdk.TokensToConsensusPower(stakingKeeper.TotalBondedTokens(ctx), stakingKeeper.PowerReduction(ctx))
@@ -76,12 +76,12 @@ func PickReferenceMer(ctx sdk.Context, k keeper.Keeper, voteTargets map[string]s
 		}
 
 		if ballotPower > largestBallotPower || largestBallotPower == 0 {
-			referenceMer = denom
+			referenceBlack = denom
 			largestBallotPower = ballotPower
-		} else if largestBallotPower == ballotPower && referenceMer > denom {
-			referenceMer = denom
+		} else if largestBallotPower == ballotPower && referenceBlack > denom {
+			referenceBlack = denom
 		}
 	}
 
-	return referenceMer
+	return referenceBlack
 }

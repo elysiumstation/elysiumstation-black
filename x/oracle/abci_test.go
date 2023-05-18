@@ -297,7 +297,7 @@ func TestOracleRewardBand(t *testing.T) {
 func TestOracleMultiRewardDistribution(t *testing.T) {
 	input, h := setup(t)
 
-	// denom1 and denom2 have the same voting power, but denom2 has been chosen as referenceMer by alphabetical order.
+	// denom1 and denom2 have the same voting power, but denom2 has been chosen as referenceBlack by alphabetical order.
 	// Account 1, denom1, denom2
 	makeAggregatePrevoteAndVote(t, input, h, 0, sdk.DecCoins{{Denom: denom1, Amount: randomExchangeRate}, {Denom: denom2, Amount: randomExchangeRate}}, 0)
 
@@ -317,7 +317,7 @@ func TestOracleMultiRewardDistribution(t *testing.T) {
 
 	expectedRewardAmt := sdk.NewDecFromInt(rewardAmt.QuoRaw(3).MulRaw(2)).QuoInt64(int64(rewardDistributedWindow)).TruncateInt()
 	expectedRewardAmt2 := sdk.NewDecFromInt(rewardAmt.QuoRaw(3)).QuoInt64(int64(rewardDistributedWindow)).TruncateInt()
-	expectedRewardAmt3 := sdk.ZeroInt() // even vote power is same denom2 with denom1, denom1 chosen referenceMer because alphabetical order
+	expectedRewardAmt3 := sdk.ZeroInt() // even vote power is same denom2 with denom1, denom1 chosen referenceBlack because alphabetical order
 
 	rewards := input.DistrKeeper.GetValidatorOutstandingRewards(input.Ctx.WithBlockHeight(2), keeper.ValAddrs[0])
 	require.Equal(t, expectedRewardAmt, rewards.Rewards.AmountOf(blackfury.AttoFuryDenom).TruncateInt())
@@ -333,7 +333,7 @@ func TestOracleExchangeRate(t *testing.T) {
 	denom2RandomExchangeRate := sdk.NewDecWithPrec(1000000000, int64(6)).MulInt64(microUnit)
 	usmRandomExchangeRate := sdk.NewDecWithPrec(1000000, int64(6)).MulInt64(microUnit)
 
-	// denom2 has been chosen as referenceMer by highest voting power
+	// denom2 has been chosen as referenceBlack by highest voting power
 	// Account 1, FUSD, denom2
 	makeAggregatePrevoteAndVote(t, input, h, 0, sdk.DecCoins{{Denom: blackfury.MicroFUSDDenom, Amount: usmRandomExchangeRate}, {Denom: denom2, Amount: denom2RandomExchangeRate}}, 0)
 
@@ -396,7 +396,7 @@ func TestOracleExchangeRateVal5(t *testing.T) {
 	usmExchangeRate := sdk.NewDecWithPrec(505, int64(6)).MulInt64(microUnit)
 	usmExchangeRateWithErr := sdk.NewDecWithPrec(500, int64(6)).MulInt64(microUnit)
 
-	// denom2 has been chosen as referenceMer by highest voting power
+	// denom2 has been chosen as referenceBlack by highest voting power
 	// Account 1, denom2, FUSD
 	makeAggregatePrevoteAndVote(t, input, h, 0, sdk.DecCoins{{Denom: denom2, Amount: denom2ExchangeRate}, {Denom: blackfury.MicroFUSDDenom, Amount: usmExchangeRate}}, 0)
 

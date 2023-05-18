@@ -70,7 +70,7 @@ func TestFuzz_Tally(t *testing.T) {
 	})
 }
 
-func TestFuzz_PickReferenceMer(t *testing.T) {
+func TestFuzz_PickReferenceBlack(t *testing.T) {
 	var denoms []string
 
 	f := fuzz.New().NilChance(0).Funcs(
@@ -132,6 +132,6 @@ func TestFuzz_PickReferenceMer(t *testing.T) {
 	f.Fuzz(&voteMap)
 
 	require.NotPanics(t, func() {
-		oracle.PickReferenceMer(input.Ctx, input.OracleKeeper, voteTargets, voteMap)
+		oracle.PickReferenceBlack(input.Ctx, input.OracleKeeper, voteTargets, voteMap)
 	})
 }

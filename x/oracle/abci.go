@@ -59,9 +59,9 @@ func EndBlocker(ctx sdk.Context, k keeper.Keeper) {
 		voteMap := k.OrganizeBallotByDenom(ctx, validatorClaimMap)
 		ctx.Logger().Debug("organized ballot by denom", "voteMap", voteMap)
 
-		if referenceMer := PickReferenceMer(ctx, k, voteTargets, voteMap); referenceMer != "" {
+		if referenceBlack := PickReferenceBlack(ctx, k, voteTargets, voteMap); referenceBlack != "" {
 			// make voteMap of Reference Black to calculate cross exchange rates
-			ballotRM := voteMap[referenceMer]
+			ballotRM := voteMap[referenceBlack]
 			voteMapRM := ballotRM.ToMap()
 
 			var exchangeRateRM sdk.Dec
@@ -72,7 +72,7 @@ func EndBlocker(ctx sdk.Context, k keeper.Keeper) {
 			for denom, ballot := range voteMap {
 
 				// Convert ballot to cross exchange rates
-				if denom != referenceMer {
+				if denom != referenceBlack {
 					ballot = ballot.ToCrossRateWithSort(voteMapRM)
 				}
 
@@ -80,7 +80,7 @@ func EndBlocker(ctx sdk.Context, k keeper.Keeper) {
 				exchangeRate := Tally(ctx, ballot, params.RewardBand, validatorClaimMap)
 
 				// Transform into the original form {denom}/uUSD
-				if denom != referenceMer {
+				if denom != referenceBlack {
 					if exchangeRate.IsZero() {
 						k.Logger(ctx).Error("invalid tallied cross exchange rate", "denom", denom, "exchangeRate", exchangeRate)
 						// Do not set exchange rate
