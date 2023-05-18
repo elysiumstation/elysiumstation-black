@@ -26,33 +26,33 @@ func TestMsgCreate_ValidateBasic(t *testing.T) {
 		},
 		{
 			desc:   "invalid receiver address",
-			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			to:     "xxx",
 		},
 		{
 			desc:   "ErrAmountNotPositive",
-			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
-			to:     "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
+			to:     "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jlshe67",
 			amount: sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(0)),
 		},
 		{
 			desc:         "ErrPastLockTime",
-			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
-			to:           "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
+			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
+			to:           "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jlshe67",
 			amount:       sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(1)),
 			lockDuration: 0,
 		},
 		{
 			desc:         "ErrTooLongLockTime",
-			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
-			to:           "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
+			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
+			to:           "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jlshe67",
 			amount:       sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(1)),
 			lockDuration: types.MaxLockTime + 1,
 		},
 		{
 			desc:         "valid",
-			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
-			to:           "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
+			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
+			to:           "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jlshe67",
 			amount:       sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(1)),
 			lockDuration: types.MaxLockTime - 1,
 			valid:        true,
@@ -78,8 +78,8 @@ func TestMsgCreate_ValidateBasic(t *testing.T) {
 func TestMsgCreate_GetSigners(t *testing.T) {
 	app.Setup(false)
 	msg := &types.MsgCreate{
-		Sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
-		To:           "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jr632l3",
+		Sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
+		To:           "did:fury:black1353a4uac03etdylz86tyq9ssm3x2704jlshe67",
 		Amount:       sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(1)),
 		LockDuration: uint64(100000),
 	}
@@ -104,18 +104,18 @@ func TestMsgDeposit_ValidateBasic(t *testing.T) {
 		},
 		{
 			desc:   "invalid veId",
-			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			veId:   "xxx",
 		},
 		{
 			desc:   "ErrAmountNotPositive",
-			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			veId:   "ve-100",
 			amount: sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(0)),
 		},
 		{
 			desc:   "valid",
-			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			veId:   "ve-100",
 			amount: sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(1)),
 			valid:  true,
@@ -140,7 +140,7 @@ func TestMsgDeposit_ValidateBasic(t *testing.T) {
 func TestMsgDeposit_GetSigners(t *testing.T) {
 	app.Setup(false)
 	msg := &types.MsgDeposit{
-		Sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+		Sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 		VeId:   "ve-100",
 		Amount: sdk.NewCoin(blacktypes.AttoFuryDenom, sdk.NewInt(1)),
 	}
@@ -165,24 +165,24 @@ func TestMsgExtendTime_ValidateBasic(t *testing.T) {
 		},
 		{
 			desc:   "invalid veId",
-			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			veId:   "xxx",
 		},
 		{
 			desc:         "ErrPastLockTime",
-			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			veId:         "ve-100",
 			lockDuration: 0,
 		},
 		{
 			desc:         "ErrTooLongLockTime",
-			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			veId:         "ve-100",
 			lockDuration: types.MaxLockTime + 1,
 		},
 		{
 			desc:         "valid",
-			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			veId:         "ve-100",
 			lockDuration: types.MaxLockTime - 1,
 			valid:        true,
@@ -207,7 +207,7 @@ func TestMsgExtendTime_ValidateBasic(t *testing.T) {
 func TestMsgExtendTime_GetSigners(t *testing.T) {
 	app.Setup(false)
 	msg := &types.MsgExtendTime{
-		Sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+		Sender:       "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 		VeId:         "ve-100",
 		LockDuration: types.MaxLockTime - 1,
 	}
@@ -232,24 +232,24 @@ func TestMsgMerge_ValidateBasic(t *testing.T) {
 		},
 		{
 			desc:     "invalid fromVeId",
-			sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			fromVeId: "xxx",
 		},
 		{
 			desc:     "invalid toVeId",
-			sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			fromVeId: "ve-100",
 			toVeId:   "xxx",
 		},
 		{
 			desc:     "fromVeId != toVeId",
-			sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			fromVeId: "ve-100",
 			toVeId:   "ve-100",
 		},
 		{
 			desc:     "valid",
-			sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			fromVeId: "ve-100",
 			toVeId:   "ve-200",
 			valid:    true,
@@ -274,7 +274,7 @@ func TestMsgMerge_ValidateBasic(t *testing.T) {
 func TestMsgMerge_GetSigners(t *testing.T) {
 	app.Setup(false)
 	msg := &types.MsgMerge{
-		Sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+		Sender:   "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 		FromVeId: "ve-100",
 		ToVeId:   "ve-200",
 	}
@@ -298,12 +298,12 @@ func TestMsgWithdraw_ValidateBasic(t *testing.T) {
 		},
 		{
 			desc:   "invalid veId",
-			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			veId:   "xxx",
 		},
 		{
 			desc:   "valid",
-			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+			sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 			veId:   "ve-100",
 			valid:  true,
 		},
@@ -326,7 +326,7 @@ func TestMsgWithdraw_ValidateBasic(t *testing.T) {
 func TestMsgWithdraw_GetSigners(t *testing.T) {
 	app.Setup(false)
 	msg := &types.MsgWithdraw{
-		Sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4ppeaeg5",
+		Sender: "did:fury:black1mnfm9c7cdgqnkk66sganp78m0ydmcr4panm2dm",
 		VeId:   "ve-100",
 	}
 	signers := msg.GetSigners()

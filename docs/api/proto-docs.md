@@ -843,7 +843,7 @@ Params defines the parameters for the maker module.
 | ----- | ---- | ----- | ----------- |
 | `account` | [string](#string) |  | account who owns collateral |
 | `collateral` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | existing collateral |
-| `mer_debt` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | remaining black debt, including minted by collateral, mint fee, last interest |
+| `black_debt` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | remaining black debt, including minted by collateral, mint fee, last interest |
 | `fury_collateralized` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total collateralized fury |
 | `last_interest` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | remaining interest debt at last settlement |
 | `last_settlement_block` | [int64](#int64) |  | the block of last settlement |
@@ -864,7 +864,7 @@ BackingRiskParams represents an object of backing coin risk parameters.
 | `backing_denom` | [string](#string) |  | backing coin denom |
 | `enabled` | [bool](#bool) |  | whether enabled |
 | `max_backing` | [string](#string) |  | maximum total backing amount |
-| `max_mer_mint` | [string](#string) |  | maximum mintable Black amount |
+| `max_black_mint` | [string](#string) |  | maximum mintable Black amount |
 | `mint_fee` | [string](#string) |  | mint fee rate |
 | `burn_fee` | [string](#string) |  | burn fee rate |
 | `buyback_fee` | [string](#string) |  | buyback fee rate |
@@ -952,7 +952,7 @@ CollateralRiskParams represents an object of collateral risk parameters.
 | `collateral_denom` | [string](#string) |  | collateral coin denom |
 | `enabled` | [bool](#bool) |  | whether enabled |
 | `max_collateral` | [string](#string) |  | maximum total collateral amount; empty means no limit |
-| `max_mer_mint` | [string](#string) |  | maximum total mintable Black amount; empty means no limit |
+| `max_black_mint` | [string](#string) |  | maximum total mintable Black amount; empty means no limit |
 | `liquidation_threshold` | [string](#string) |  | ratio at which a position is defined as undercollateralized |
 | `loan_to_value` | [string](#string) |  | maximum ratio of maximum amount of currency that can be borrowed with a specific collateral |
 | `basic_loan_to_value` | [string](#string) |  | basic ratio of maximum amount of currency that can be borrowed with a specific collateral |
@@ -974,7 +974,7 @@ CollateralRiskParams represents an object of collateral risk parameters.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `mer_minted` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total minted black; negative value means burned black |
+| `black_minted` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total minted black; negative value means burned black |
 | `backing` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total backing |
 | `fury_burned` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total burned fury; negative value means minted fury |
 
@@ -992,7 +992,7 @@ CollateralRiskParams represents an object of collateral risk parameters.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | `collateral` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total collateral |
-| `mer_debt` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total existing black debt, including minted by collateral, mint fee, last interest |
+| `black_debt` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total existing black debt, including minted by collateral, mint fee, last interest |
 | `fury_collateralized` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total collateralized fury |
 
 
@@ -1081,7 +1081,7 @@ parameters.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | `backing_value` | [string](#string) |  | total backing value in uUSD |
-| `mer_minted` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total minted black; negative value means burned black |
+| `black_minted` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total minted black; negative value means burned black |
 | `fury_burned` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total burned fury; negative value means minted fury |
 
 
@@ -1097,7 +1097,7 @@ parameters.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `mer_debt` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total existing black debt, including minted by collateral, mint fee, last interest |
+| `black_debt` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total existing black debt, including minted by collateral, mint fee, last interest |
 | `fury_collateralized` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  | total collateralized fury |
 
 
