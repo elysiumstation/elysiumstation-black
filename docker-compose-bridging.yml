@@ -3,7 +3,7 @@ version: '3'
 services:
   bridging-blackfurydnode0:
     container_name: bridging-blackfurydnode0
-    image: "furyaofficial/localnetnode"
+    image: "fanfury/fanfury:localnetnode"
     ports:
       - "27656-27657:26656-26657"
       - "8645-8646:8545-8546"
@@ -20,7 +20,7 @@ services:
 
   bridging-blackfurydnode1:
     container_name: bridging-blackfurydnode1
-    image: "furyaofficial/localnetnode"
+    image: "fanfury/fanfury:localnetnode"
     ports:
       - "27659-27660:26656-26657"
       - "8647-8648:8545-8546"
@@ -35,7 +35,7 @@ services:
 
   bridging-blackfurydnode2:
     container_name: bridging-blackfurydnode2
-    image: "furyaofficial/localnetnode"
+    image: "fanfury/fanfury:localnetnode"
     environment:
       - ID=2
       - LOG=${LOG:-blackfuryd.log}
@@ -50,7 +50,7 @@ services:
 
   bridging-blackfurydnode3:
     container_name: bridging-blackfurydnode3
-    image: "furyaofficial/localnetnode"
+    image: "fanfury/fanfury:localnetnode"
     environment:
       - ID=3
       - LOG=${LOG:-blackfuryd.log}

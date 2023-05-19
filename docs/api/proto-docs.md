@@ -732,7 +732,7 @@ Query defines the gRPC querier service.
 
 | Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
 | ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `Params` | [QueryParamsRequest](#blackfury.gauge.v1.QueryParamsRequest) | [QueryParamsResponse](#blackfury.gauge.v1.QueryParamsResponse) | Parameters queries the parameters of the module. | GET|/furyaofficial/blackfury/gauge/params|
+| `Params` | [QueryParamsRequest](#blackfury.gauge.v1.QueryParamsRequest) | [QueryParamsResponse](#blackfury.gauge.v1.QueryParamsResponse) | Parameters queries the parameters of the module. | GET|/fanfury/fanfury:blackfury/gauge/params|
 
  <!-- end services -->
 
@@ -2637,7 +2637,7 @@ Query defines the gRPC querier service.
 | `AggregatePrevotes` | [QueryAggregatePrevotesRequest](#blackfury.oracle.v1.QueryAggregatePrevotesRequest) | [QueryAggregatePrevotesResponse](#blackfury.oracle.v1.QueryAggregatePrevotesResponse) | AggregatePrevotes returns aggregate prevotes of all validators. | GET|/blackfury/oracle/v1/validators/aggregate_prevotes|
 | `AggregateVote` | [QueryAggregateVoteRequest](#blackfury.oracle.v1.QueryAggregateVoteRequest) | [QueryAggregateVoteResponse](#blackfury.oracle.v1.QueryAggregateVoteResponse) | AggregateVote returns an aggregate vote of a validator. | GET|/blackfury/oracle/v1/valdiators/{validator_addr}/aggregate_vote|
 | `AggregateVotes` | [QueryAggregateVotesRequest](#blackfury.oracle.v1.QueryAggregateVotesRequest) | [QueryAggregateVotesResponse](#blackfury.oracle.v1.QueryAggregateVotesResponse) | AggregateVotes returns aggregate votes of all validators. | GET|/blackfury/oracle/v1/validators/aggregate_votes|
-| `Params` | [QueryParamsRequest](#blackfury.oracle.v1.QueryParamsRequest) | [QueryParamsResponse](#blackfury.oracle.v1.QueryParamsResponse) | Parameters queries the parameters of the module. | GET|/furyaofficial/blackfury/oracle/params|
+| `Params` | [QueryParamsRequest](#blackfury.oracle.v1.QueryParamsRequest) | [QueryParamsResponse](#blackfury.oracle.v1.QueryParamsResponse) | Parameters queries the parameters of the module. | GET|/fanfury/fanfury:blackfury/oracle/params|
 
  <!-- end services -->
 
