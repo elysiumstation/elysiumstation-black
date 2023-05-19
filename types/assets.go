@@ -36,7 +36,7 @@ func SetDenomMetaDataForStableCoins(ctx sdk.Context, k bankkeeper.Keeper) {
 			Description: "The native stable token of the Blackfury.",
 			DenomUnits: []*banktypes.DenomUnit{
 				{Denom: "u" + display, Exponent: uint32(0), Aliases: []string{"micro" + display}}, // e.g., ufusd
-				{Denom: "m" + display, Exponent: uint32(3), Aliases: []string{"milli" + display}}, // e.g., musm
+				{Denom: "m" + display, Exponent: uint32(3), Aliases: []string{"milli" + display}}, // e.g., musbx
 				{Denom: display, Exponent: uint32(6), Aliases: []string{}},                        // e.g., fusd
 			},
 			Base:    base,

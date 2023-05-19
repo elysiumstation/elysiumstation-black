@@ -158,7 +158,7 @@ func CmdQueryFeederDelegation() *cobra.Command {
 		Long: strings.TrimSpace(`
 Query the account the validator's oracle voting right is delegated to.
 
-$ blackfuryd query oracle feeder did:fury:blackvaloper...
+$ blackfuryd query oracle feeder blackvaloper...
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)
@@ -199,7 +199,7 @@ func CmdQueryMissCounter() *cobra.Command {
 		Long: strings.TrimSpace(`
 Query the # of vote periods missed in this oracle slash window.
 
-$ blackfuryd query oracle miss did:fury:blackvaloper...
+$ blackfuryd query oracle miss blackvaloper...
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)
@@ -243,7 +243,7 @@ $ blackfuryd query oracle aggregate-prevotes
 
 Or, can filter with voter address
 
-$ blackfuryd query oracle aggregate-prevotes did:fury:blackvaloper...
+$ blackfuryd query oracle aggregate-prevotes blackvaloper...
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)
@@ -299,7 +299,7 @@ $ blackfuryd query oracle aggregate-votes
 
 Or, can filter with voter address
 
-$ blackfuryd query oracle aggregate-votes did:fury:blackvaloper...
+$ blackfuryd query oracle aggregate-votes blackvaloper...
 `),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)

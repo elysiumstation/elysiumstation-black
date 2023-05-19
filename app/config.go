@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	AccountAddressPrefix = "did:fury:black"
+	AccountAddressPrefix = "black"
 )
 
 // SetBech32Prefixes sets the global prefixes to be used when serializing addresses and public keys to Bech32 strings.
