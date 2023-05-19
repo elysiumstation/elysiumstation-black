@@ -51,7 +51,7 @@ func (suite *KeeperTestSuite) SetupTest() {
 		Version: tmversion.Consensus{
 			Block: version.BlockProtocol,
 		},
-		ChainID:         "blackfury_5000-101",
+		ChainID:         "clockend_4200-101",
 		Height:          1,
 		Time:            time.Now().UTC(),
 		ProposerAddress: consAddress.Bytes(),
