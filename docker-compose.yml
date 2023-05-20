@@ -3,7 +3,7 @@ version: '3'
 services:
   blackfurydnode0:
     container_name: blackfurydnode0
-    image: "fanfury:localnetnode"
+    image: "fanfury/fanfury:localnetnode"
     ports:
       - "26656-26657:26656-26657"
       - "8545-8546:8545-8546"
@@ -20,7 +20,7 @@ services:
 
   blackfurydnode1:
     container_name: blackfurydnode1
-    image: "fanfury:localnetnode"
+    image: "fanfury/fanfury:localnetnode"
     ports:
       - "26659-26660:26656-26657"
       - "8547-8548:8545-8546"
@@ -35,7 +35,7 @@ services:
 
   blackfurydnode2:
     container_name: blackfurydnode2
-    image: "fanfury:localnetnode"
+    image: "fanfury/fanfury:localnetnode"
     environment:
       - ID=2
       - LOG=${LOG:-blackfuryd.log}
@@ -50,7 +50,7 @@ services:
 
   blackfurydnode3:
     container_name: blackfurydnode3
-    image: "fanfury:localnetnode"
+    image: "fanfury/fanfury:localnetnode"
     environment:
       - ID=3
       - LOG=${LOG:-blackfuryd.log}
